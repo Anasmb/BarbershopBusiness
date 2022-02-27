@@ -122,6 +122,7 @@
             android:layout_marginVertical="24dp">
 
             <LinearLayout
+                android:id="@+id/barbersLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -144,6 +145,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/serviceLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -180,6 +182,7 @@
             android:layout_marginVertical="24dp">
 
             <LinearLayout
+                android:id="@+id/timeLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -202,6 +205,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/galleryLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -217,7 +221,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Gallary"
+                    android:text="Gallery"
                     android:textColor="@color/black"
                     android:fontFamily="@font/roboto_bold"/>
 
@@ -238,6 +242,7 @@
             android:layout_marginVertical="24dp">
 
             <LinearLayout
+                android:id="@+id/feedbackLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"

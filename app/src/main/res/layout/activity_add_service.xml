@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddServiceActivity"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_marginBottom="52dp">
+
+        <ImageView
+            android:id="@+id/addServiceBackButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_arrow_back_32"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Add Service"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:fontFamily="@font/roboto_regular" />
+
+    </RelativeLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:startIconTint="#9C9C9C"
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:layout_marginVertical="8dp"
+        android:hint="Service Name"
+        android:textColorHint="#9C9C9C">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/serviceNameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="16dp"
+            android:inputType="text"
+            android:singleLine="true"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:startIconTint="#9C9C9C"
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:layout_marginVertical="8dp"
+        android:hint="Duration"
+        android:textColorHint="#9C9C9C">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/serviceDurationEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="16dp"
+            android:inputType="numberDecimal"
+            android:singleLine="true"
+            android:maxLength="5"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:startIconTint="#9C9C9C"
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:layout_marginVertical="8dp"
+        android:hint="Price"
+        android:textColorHint="#9C9C9C">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/servicePriceEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="16dp"
+            android:inputType="numberDecimal"
+            android:singleLine="true" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/addServiceSaveButton"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_marginHorizontal="64dp"
+        android:layout_marginVertical="24dp"
+        android:text="Save"/>
+
+</LinearLayout>

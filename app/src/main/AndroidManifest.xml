@@ -9,6 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BarberBusiness">
+        <activity android:name=".TimeActivity"></activity>
+        <activity android:name=".AddServiceActivity" />
+        <activity android:name=".ServiceActivity" />
+        <activity android:name=".AddBarberActivity" />
+        <activity android:name=".BarbersActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
