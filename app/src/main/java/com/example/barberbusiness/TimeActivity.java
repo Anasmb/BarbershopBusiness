@@ -7,10 +7,13 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
+import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -19,6 +22,11 @@ public class TimeActivity extends AppCompatActivity implements View.OnClickListe
     TimePickerDialog timePickerDialog;
     TextInputEditText sundayFrom,sundayTo, mondayFrom, mondayTo, tuesdayFrom, tuesdayTo,
             wednesdayFrom, wednesdayTo, thursdayFrom, thursdayTo, fridayFrom, fridayTo, saturdayFrom, saturdayTo;
+
+    MaterialCheckBox sundayCheckBox, mondayCheckBox, tuesdayCheckBox, wednesdayCheckBox,
+            thursdayCheckBox, fridayCheckBox, saturdayCheckBox;
+
+    String openingHours;
 
     ImageView backButton;
     ImageView doneButton;
@@ -33,8 +41,10 @@ public class TimeActivity extends AppCompatActivity implements View.OnClickListe
         backButton = findViewById(R.id.timeBackButton);
         backButton.setOnClickListener(backButtonClick);
         doneButton = findViewById(R.id.timeActivityDoneButton);
+        doneButton.setOnClickListener(doneButtonClick);
 
         initializeEditTexts();
+        initializeCheckBoxes();
 
     }
 
@@ -72,6 +82,21 @@ public class TimeActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         public void onClick(View view) {
             finish();
+        }
+    };
+
+    private View.OnClickListener doneButtonClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            openingHours = sundayFrom.getText().toString() + "," + sundayTo.getText().toString() + "," + sundayCheckBox.isChecked() + "," +
+                            mondayFrom.getText().toString() + "," + mondayTo.getText().toString() + "," + mondayCheckBox.isChecked() + "," +
+                            tuesdayFrom.getText().toString() + "," + tuesdayTo.getText().toString() + "," + tuesdayCheckBox.isChecked() + "," +
+                            wednesdayFrom.getText().toString() + "," + wednesdayTo.getText().toString() + "," + wednesdayCheckBox.isChecked() + "," +
+                            thursdayFrom.getText().toString() + "," + thursdayTo.getText().toString() + "," + thursdayCheckBox.isChecked() + "," +
+                            fridayFrom.getText().toString() + "," + fridayTo.getText().toString() + "," +   fridayCheckBox.isChecked() + "," +
+                            saturdayFrom.getText().toString() + "," + saturdayTo.getText().toString() + "," + saturdayCheckBox.isChecked() + ",";
+         //   Log.d("debug", openingHours);
+
         }
     };
 
@@ -152,6 +177,16 @@ public class TimeActivity extends AppCompatActivity implements View.OnClickListe
         saturdayFrom.setOnClickListener(this);
         saturdayTo = findViewById(R.id.saturdayToEditText);
         saturdayTo.setOnClickListener(this);
+    }
+
+    private void initializeCheckBoxes(){
+        sundayCheckBox = findViewById(R.id.sundayCheckBox);
+        mondayCheckBox = findViewById(R.id.mondayCheckBox);
+        tuesdayCheckBox = findViewById(R.id.tuesdayCheckBox);
+        wednesdayCheckBox = findViewById(R.id.wednesdayCheckBox);
+        thursdayCheckBox = findViewById(R.id.thursdayCheckBox);
+        fridayCheckBox = findViewById(R.id.fridayCheckBox);
+        saturdayCheckBox = findViewById(R.id.saturdayCheckBox);
     }
 
 
