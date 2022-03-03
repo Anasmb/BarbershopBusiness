@@ -25,6 +25,7 @@ public class AddBarbershopActivity extends AppCompatActivity{
     private ImageView backBtn;
     private TextInputEditText shopName, email, password, phoneNumber, address;
     private MaterialButton addButton;
+    private String barberShopAddress;
     private String latitude, longitude;
 
     @Override
@@ -65,6 +66,7 @@ public class AddBarbershopActivity extends AppCompatActivity{
             address.setText(coordinates[0]);
             latitude = coordinates[1];
             longitude = coordinates[2];
+            barberShopAddress = coordinates[0] + "/" + latitude + "/" + longitude;
             Log.d("debug", "onActivityResult: latitude = " + latitude + "  longitude = " + longitude);
 
         }
@@ -89,27 +91,29 @@ public class AddBarbershopActivity extends AppCompatActivity{
                     public void run() {
                         //Starting Write and Read data with URL
                         //Creating array for parameters
-                        String[] field = new String[2];
+                        String[] field = new String[6];
                         field[0] = "ShopName";
                         field[1] = "PhoneNumber";
                         field[2] = "Email";
                         field[3] = "Address";
-                        field[4] = "Status";
+                        field[4] = "Password";
+                        field[5] = "Status";
                         //Creating array for data
-                        String[] data = new String[2];
+                        String[] data = new String[6];
                         data[0] = String.valueOf(shopName.getText());
                         data[1] = String.valueOf(phoneNumber.getText());
                         data[2] = String.valueOf(email.getText());
-                        data[3]= String.valueOf(address.getText());
-                        data[4]= "hidden";
-                        Log.d("php" , data[0] + " " + data[1]);
+                        data[3]= barberShopAddress;
+                        data[4]= String.valueOf(password.getText());
+                        data[5]= "hidden";
+                        Log.d("php" , data[0] + " " + data[1] + " " + data[2] + " " + data[3] + " " + data[4] + " " + data[5]);
                         PutData putData = new PutData("http://192.168.100.6/barbershop-php/registerBarbershop.php", "POST", field, data);
                         if (putData.startPut()) {
                             if (putData.onComplete()) {
                                 String result = putData.getResult();
-                                if(result.equals("Login Success")){
+                                if(result.equals("Register Success")){
                                     Log.d("php", result);
-                                    Toast.makeText(getApplicationContext(),"Login Success",Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(),"Register Success",Toast.LENGTH_SHORT).show();
                                     finish();
                                     Intent intent = new Intent(getApplicationContext(), AdminMainActivity.class);
                                     startActivity(intent);
