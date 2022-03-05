@@ -48,8 +48,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_centerInParent="true"
-                    android:src="@drawable/ic_image_black_24dp"
-                    android:tint="#787878"/>
+                    android:src="@drawable/ic_image_black_24dp" />
 
             </RelativeLayout>
 
@@ -75,9 +74,10 @@
                 android:layout_gravity="center"/>
 
             <TextView
+                android:id="@+id/shopNameText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="HERRY POER"
+                android:text="SHOP NAME"
                 android:fontFamily="@font/roboto_bold"
                 android:layout_marginHorizontal="10dp"
                 android:textColor="@color/black"
@@ -99,10 +99,11 @@
                     android:layout_gravity="center"/>
 
                 <TextView
+                    android:id="@+id/shopAddressText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="10dp"
-                    android:text="Prince Saud al faiasl, AL Rawdah, Riyadh. 23424, Saudi Arabia"
+                    android:text="xxxxxxxxxx, xxxxxxxxxxxxxxxxxxxxxx, xxxxxxxxxxxxxxxx"
                     android:textSize="10dp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/roboto_regular"/>
@@ -274,8 +275,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_weight="1">
-
-
 
             </LinearLayout>
 

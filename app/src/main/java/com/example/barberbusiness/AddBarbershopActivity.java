@@ -4,7 +4,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.location.LocationListener;
 import android.os.Bundle;
 import android.os.Handler;
@@ -128,6 +130,9 @@ public class AddBarbershopActivity extends AppCompatActivity{
                         //End Write and Read data with URL
                     }
                 });
+            }
+            else{
+                Toast.makeText(getApplicationContext(),"All fields are required !",Toast.LENGTH_LONG).show();
             }
         }
     };

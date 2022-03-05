@@ -28,6 +28,8 @@ public class BarbershopLoginActivity extends AppCompatActivity {
 
         phoneNumber = findViewById(R.id.loginPhoneNumberEditText);
         password = findViewById(R.id.loginPasswordEditText);
+        phoneNumber.setText("0568549732");
+        password.setText("anas1224");
 
         loginButton = findViewById(R.id.loginButton);
         loginButton.setOnClickListener(loginListener);
@@ -46,22 +48,23 @@ public class BarbershopLoginActivity extends AppCompatActivity {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        //Starting Write and Read data with URL
-                        //Creating array for parameters
                         String[] field = new String[2];
-                        field[0] = "phonenumber";
-                        field[1] = "password";
-                        //Creating array for data
+                        field[0] = "PhoneNumber";
+                        field[1] = "Password";
                         String[] data = new String[2];
                         data[0] = String.valueOf(phoneNumber.getText());
                         data[1] = String.valueOf(password.getText());
                         Log.d("php" , data[0] + " " + data[1]);
-                        PutData putData = new PutData("http://192.168.100.6/barbershop-php/login.php", "POST", field, data);
+                        PutData putData = new PutData("http://192.168.100.6/barbershop-php/loginBarbershop.php", "POST", field, data);
                         if (putData.startPut()) {
                             if (putData.onComplete()) {
                                 String result = putData.getResult();
                                 if(result.equals("Login Success")){
                                     Log.d("php", result);
+                                    Intent intent = new Intent(getApplicationContext(), BarbershopMainActivity.class);
+                                    intent.putExtra("phonenumber" , phoneNumber.getText().toString()); //send phone number to next activity
+                                    startActivity(intent);
+                                    finish();
                                     Toast.makeText(getApplicationContext(),"Login Success",Toast.LENGTH_LONG).show();
                                 }
                                 else {

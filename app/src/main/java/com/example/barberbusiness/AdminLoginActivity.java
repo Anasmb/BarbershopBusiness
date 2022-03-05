@@ -64,9 +64,9 @@ public class AdminLoginActivity extends AppCompatActivity {
                                 if(result.equals("Login Success")){
                                     Log.d("php", result);
                                     Toast.makeText(getApplicationContext(),"Login Success",Toast.LENGTH_SHORT).show();
-                                    finish();
                                     Intent intent = new Intent(getApplicationContext(), AdminMainActivity.class);
                                     startActivity(intent);
+                                    finish();
                                 }
                                 else {
                                     Toast.makeText(getApplicationContext(),result,Toast.LENGTH_LONG).show();

@@ -22,6 +22,7 @@ public class AdminMainActivity extends AppCompatActivity {
         manageAppointmentLayout = findViewById(R.id.manageAppointmentLayout);
         manageOffersLayout = findViewById(R.id.manageOffersLayout);
         logoutLayout = findViewById(R.id.adminLogoutLayout);
+        logoutLayout.setOnClickListener(logoutLayoutListener);
     }
 
     private View.OnClickListener addBarbershopLayoutListener = new View.OnClickListener() {
@@ -29,6 +30,15 @@ public class AdminMainActivity extends AppCompatActivity {
         public void onClick(View view) {
             Intent intent = new Intent(getApplicationContext() , AddBarbershopActivity.class);
             startActivity(intent);
+        }
+    };
+
+    private View.OnClickListener logoutLayoutListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(getApplicationContext(), AdminLoginActivity.class);
+            startActivity(intent);
+            finish();
         }
     };
 }
