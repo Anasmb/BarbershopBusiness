@@ -39,6 +39,7 @@ public class AddBarberActivity extends AppCompatActivity {
         saveButton.setOnClickListener(saveButtonListener);
     }
 
+
     private View.OnClickListener saveButtonListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {

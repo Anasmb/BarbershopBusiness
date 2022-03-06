@@ -17,11 +17,11 @@ import java.util.List;
 public class BarberAdapter extends RecyclerView.Adapter<BarberAdapter.BarberViewHolder> {
 
     private Context mContext;
-    private List<String> BarberItemList;
+    private List<String> barberItemList;
 
     public BarberAdapter(Context mContext, List<String> barberItemList) {
         this.mContext = mContext;
-        this.BarberItemList = barberItemList;
+        this.barberItemList = barberItemList;
     }
 
     @NonNull
@@ -37,12 +37,12 @@ public class BarberAdapter extends RecyclerView.Adapter<BarberAdapter.BarberView
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull BarberAdapter.BarberViewHolder holder, int position) {
-        String barberItem = BarberItemList.get(position);
+        String barberItem = barberItemList.get(position);
         holder.barberName.setText(barberItem);
     }
 
     public int getItemCount() {
-        return BarberItemList.size();
+        return barberItemList.size();
     }
 
 

@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,17 +30,20 @@ import java.util.List;
 public class BarbersActivity extends AppCompatActivity {
 
 
-    private String BARBER_URL = "http://192.168.100.6/barbershop-php/getBarbers.php";
+    private String SQL_URL = "http://192.168.100.6/barbershop-php/getBarbers.php";
     private ImageView addButton;
     private ImageView backButton;
     private RecyclerView recyclerView;
     private BarberAdapter adapter;
     List<String> barberItemList;
+    SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_barbers);
+
+        preferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
 
         barberItemList = new ArrayList<>();
         recyclerView = findViewById(R.id.barbersRecyclerView);
@@ -50,7 +55,8 @@ public class BarbersActivity extends AppCompatActivity {
         backButton = findViewById(R.id.barbersBackButton);
         backButton.setOnClickListener(backButtonClick);
 
-        BARBER_URL += "?BarbershopID=1";
+
+        SQL_URL += "?BarbershopID=" + preferences.getString("id","");
 
         loadBarbers();
 
@@ -72,7 +78,7 @@ public class BarbersActivity extends AppCompatActivity {
     };
 
    private void loadBarbers(){
-       StringRequest stringRequest = new StringRequest(Request.Method.POST, BARBER_URL, new Response.Listener<String>() {
+       StringRequest stringRequest = new StringRequest(Request.Method.POST, SQL_URL, new Response.Listener<String>() {
            @Override
            public void onResponse(String response) {
                try {

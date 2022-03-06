@@ -47,7 +47,8 @@
             android:layout_height="match_parent"
             android:layout_marginHorizontal="16dp"
             android:inputType="text"
-            android:singleLine="true"/>
+            android:singleLine="true"
+            android:maxLength="12"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -57,7 +58,7 @@
         android:layout_width="match_parent"
         android:layout_height="57dp"
         android:layout_marginVertical="8dp"
-        android:hint="Duration"
+        android:hint="Duration (minutes)"
         android:textColorHint="#9C9C9C">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -65,9 +66,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginHorizontal="16dp"
-            android:inputType="numberDecimal"
+            android:inputType="number"
             android:singleLine="true"
-            android:maxLength="5"/>
+            android:maxLength="3"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -86,7 +87,8 @@
             android:layout_height="match_parent"
             android:layout_marginHorizontal="16dp"
             android:inputType="numberDecimal"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:maxLength="5"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
