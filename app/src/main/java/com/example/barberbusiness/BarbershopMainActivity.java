@@ -102,6 +102,7 @@ public class BarbershopMainActivity extends AppCompatActivity {
         editor.putString("address" , column[3]);
         editor.putString("hours" , column[4]);
         editor.putString("image" , column[5]);
+        editor.putString("password" , column[6]);
         editor.commit();
 
     }

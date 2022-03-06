@@ -71,41 +71,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/changePasswordLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingVertical="16dp"
-            android:background="?attr/selectableItemBackground">
-
-            <TextView
-                android:id="@+id/changePasswordTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:fontFamily="@font/roboto_regular"
-                android:textStyle="bold"
-                android:text="Change Password"
-                android:textSize="18sp"
-                android:textColor="#7A7A7A"
-                android:drawablePadding="8dp"/>
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="20" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/ic_baseline_arrow_forward_ios_20"/>
-
-        </LinearLayout>
-
-        <LinearLayout
             android:id="@+id/changeLanguageLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

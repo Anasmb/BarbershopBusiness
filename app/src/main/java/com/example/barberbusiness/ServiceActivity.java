@@ -33,7 +33,7 @@ public class ServiceActivity extends AppCompatActivity {
     private ImageView backButton;
     private RecyclerView recyclerView;
     private ServiceAdapter adapter;
-    List<ServiceItem> serviceItemList;
+    private List<ServiceItem> serviceItemList;
     SharedPreferences preferences;
 
     @Override
