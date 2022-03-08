@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment;
 public class MoreFragment extends Fragment {
 
     private LinearLayout myAccountLayout;
-    private LinearLayout changePasswordLayout;
     private LinearLayout changeLanguageLayout;
     private LinearLayout customerSupportLayout;
     private LinearLayout logoutLayout;
@@ -24,9 +23,6 @@ public class MoreFragment extends Fragment {
 
         myAccountLayout = view.findViewById(R.id.myAccountLayout);
         myAccountLayout.setOnClickListener(myAccountLayoutListener);
-
-        changePasswordLayout = view.findViewById(R.id.changePasswordLayout);
-        changePasswordLayout.setOnClickListener(changePasswordLayoutListener);
 
         changeLanguageLayout = view.findViewById(R.id.changeLanguageLayout);
         changeLanguageLayout.setOnClickListener(changeLanguageLayoutListener);
@@ -49,13 +45,6 @@ public class MoreFragment extends Fragment {
         }
     };
 
-    private View.OnClickListener changePasswordLayoutListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(getActivity(), ChangePasswordActivity.class);
-            startActivity(intent);
-        }
-    };
 
     private View.OnClickListener changeLanguageLayoutListener = new View.OnClickListener() {
         @Override
