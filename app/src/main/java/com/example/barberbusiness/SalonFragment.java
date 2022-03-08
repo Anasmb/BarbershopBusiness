@@ -64,7 +64,6 @@ public class SalonFragment extends Fragment {
         timeLayout.setOnClickListener(timeLayoutClick);
         barbershopImage = view.findViewById(R.id.barbershopImage);
         barbershopImage.setOnClickListener(barbershopImageClicked);
-
         shopName = view.findViewById(R.id.shopNameText);
         shopName.setText(preferences.getString("shopName" , ""));
         shopAddress = view.findViewById(R.id.shopAddressText);

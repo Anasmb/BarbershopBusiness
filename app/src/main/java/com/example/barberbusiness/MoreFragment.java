@@ -1,6 +1,8 @@
 package com.example.barberbusiness;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,11 +17,13 @@ public class MoreFragment extends Fragment {
     private LinearLayout changeLanguageLayout;
     private LinearLayout customerSupportLayout;
     private LinearLayout logoutLayout;
+    private SharedPreferences preferences;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_more, container, false);
+        preferences = getActivity().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
 
         myAccountLayout = view.findViewById(R.id.myAccountLayout);
         myAccountLayout.setOnClickListener(myAccountLayoutListener);
@@ -64,6 +68,9 @@ public class MoreFragment extends Fragment {
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(getActivity(), BarbershopLoginActivity.class);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.clear();
+            editor.commit();
             startActivity(intent);
             getActivity().finish();
         }

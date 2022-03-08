@@ -28,8 +28,6 @@ public class BarbershopLoginActivity extends AppCompatActivity {
 
         phoneNumber = findViewById(R.id.loginPhoneNumberEditText);
         password = findViewById(R.id.loginPasswordEditText);
-        //phoneNumber.setText("0568549732");
-      //  password.setText("anas1224");
 
         loginButton = findViewById(R.id.loginButton);
         loginButton.setOnClickListener(loginListener);

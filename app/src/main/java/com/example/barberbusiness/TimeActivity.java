@@ -3,7 +3,11 @@ package com.example.barberbusiness;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.TimePickerDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
@@ -13,30 +17,43 @@ import android.widget.ImageView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.vishnusivadas.advanced_httpurlconnection.PutData;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class TimeActivity extends AppCompatActivity implements View.OnClickListener {
 
-    TimePickerDialog timePickerDialog;
-    TextInputEditText sundayFrom,sundayTo, mondayFrom, mondayTo, tuesdayFrom, tuesdayTo,
+    private TimePickerDialog timePickerDialog;
+    private TextInputEditText sundayFrom,sundayTo, mondayFrom, mondayTo, tuesdayFrom, tuesdayTo,
             wednesdayFrom, wednesdayTo, thursdayFrom, thursdayTo, fridayFrom, fridayTo, saturdayFrom, saturdayTo;
 
-    MaterialCheckBox sundayCheckBox, mondayCheckBox, tuesdayCheckBox, wednesdayCheckBox,
+    private MaterialCheckBox sundayCheckBox, mondayCheckBox, tuesdayCheckBox, wednesdayCheckBox,
             thursdayCheckBox, fridayCheckBox, saturdayCheckBox;
 
-    String openingHours;
+    private String openingHours;
 
-    ImageView backButton;
-    ImageView doneButton;
+    private ImageView backButton;
+    private ImageView doneButton;
 
+    private SharedPreferences preferences;
     int hour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_time);
+
+        preferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
 
         backButton = findViewById(R.id.timeBackButton);
         backButton.setOnClickListener(backButtonClick);
@@ -45,6 +62,7 @@ public class TimeActivity extends AppCompatActivity implements View.OnClickListe
 
         initializeEditTexts();
         initializeCheckBoxes();
+        loadHours();
 
     }
 
@@ -88,17 +106,62 @@ public class TimeActivity extends AppCompatActivity implements View.OnClickListe
     private View.OnClickListener doneButtonClick = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            openingHours = sundayFrom.getText().toString() + "," + sundayTo.getText().toString() + "," + sundayCheckBox.isChecked() + "," +
-                            mondayFrom.getText().toString() + "," + mondayTo.getText().toString() + "," + mondayCheckBox.isChecked() + "," +
-                            tuesdayFrom.getText().toString() + "," + tuesdayTo.getText().toString() + "," + tuesdayCheckBox.isChecked() + "," +
-                            wednesdayFrom.getText().toString() + "," + wednesdayTo.getText().toString() + "," + wednesdayCheckBox.isChecked() + "," +
-                            thursdayFrom.getText().toString() + "," + thursdayTo.getText().toString() + "," + thursdayCheckBox.isChecked() + "," +
-                            fridayFrom.getText().toString() + "," + fridayTo.getText().toString() + "," +   fridayCheckBox.isChecked() + "," +
-                            saturdayFrom.getText().toString() + "," + saturdayTo.getText().toString() + "," + saturdayCheckBox.isChecked() + ",";
-         //   Log.d("debug", openingHours);
 
+            organizeEditText();
+
+            openingHours = sundayFrom.getText().toString() + "," + sundayTo.getText().toString() + "," +
+                            mondayFrom.getText().toString() + "," + mondayTo.getText().toString() + "," +
+                            tuesdayFrom.getText().toString() + "," + tuesdayTo.getText().toString() + "," +
+                            wednesdayFrom.getText().toString() + "," + wednesdayTo.getText().toString() + "," +
+                            thursdayFrom.getText().toString() + "," + thursdayTo.getText().toString() + "," +
+                            fridayFrom.getText().toString() + "," + fridayTo.getText().toString() + "," +
+                            saturdayFrom.getText().toString() + "," + saturdayTo.getText().toString() ;
+
+            saveOpeningHoursToDB(openingHours);
         }
     };
+
+    private void saveOpeningHoursToDB(String openingHours){
+
+        if (checkAllFields()) {
+
+            doneButton.setClickable(false);
+            Handler handler = new Handler(Looper.getMainLooper());
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+
+                    String[] field = new String[2];
+                    field[0] = "BarbershopID";
+                    field[1] = "Hours";
+                    //Creating array for data
+                    String[] data = new String[2];
+                    data[0] = preferences.getString("id","");
+                    data[1] = openingHours;
+                    PutData putData = new PutData("http://192.168.100.6/barbershop-php/hoursAPI.php", "POST", field, data);
+                    if (putData.startPut()) {
+                        if (putData.onComplete()) {
+                            String result = putData.getResult();
+                            if (result.equals("Add Success")) {
+                                Log.d("php", result);
+                                Toast.makeText(getApplicationContext(), "Hours Added Successfully", Toast.LENGTH_SHORT).show();
+                                preferences.edit().putString("hours", openingHours).apply();
+                                finish();
+                            } else { // All fields are required
+                                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
+                                Log.d("php", result);
+                                doneButton.setClickable(true);
+                            }
+                        }
+                    }
+                    //End Write and Read data with URL
+                }
+            });
+        } else {
+            Toast.makeText(getApplicationContext(), "All fields are required !", Toast.LENGTH_LONG).show();
+        }
+
+    }
 
     private void timePickerToEditText(View view, int hour, int minute, String AM_PM){
         switch (view.getId()){
@@ -187,6 +250,49 @@ public class TimeActivity extends AppCompatActivity implements View.OnClickListe
         thursdayCheckBox = findViewById(R.id.thursdayCheckBox);
         fridayCheckBox = findViewById(R.id.fridayCheckBox);
         saturdayCheckBox = findViewById(R.id.saturdayCheckBox);
+    }
+
+    private void organizeEditText(){
+        if(sundayCheckBox.isChecked()){
+            sundayFrom.setText("Closed"); sundayTo.setText("Closed");
+        }
+        if(mondayCheckBox.isChecked()){
+            mondayFrom.setText("Closed"); mondayTo.setText("Closed");
+        }
+        if(tuesdayCheckBox.isChecked()){
+            tuesdayFrom.setText("Closed"); tuesdayTo.setText("Closed");
+        }
+        if(wednesdayCheckBox.isChecked()){
+            wednesdayFrom.setText("Closed"); wednesdayTo.setText("Closed");
+        }
+        if(thursdayCheckBox.isChecked()){
+            thursdayFrom.setText("Closed"); thursdayTo.setText("Closed");
+        }
+        if(fridayCheckBox.isChecked()){
+            fridayFrom.setText("Closed"); fridayTo.setText("Closed");
+        }
+        if(saturdayCheckBox.isChecked()){
+            saturdayFrom.setText("Closed"); saturdayTo.setText("Closed");
+        }
+    }
+
+    private boolean checkAllFields(){
+        if(sundayFrom.length() > 2 && sundayTo.length() > 2 && mondayFrom.length() > 2 && mondayTo.length() > 2 && tuesdayFrom.length() > 2 && tuesdayTo.length() > 2 && wednesdayFrom.length() > 2
+                && wednesdayTo.length() > 2 && thursdayFrom.length() > 2 && thursdayTo.length() > 2 && fridayFrom.length() > 2 && fridayTo.length() > 2 && saturdayFrom.length() > 2 && saturdayTo.length() > 2){
+            return true;
+        }
+        return false;
+    }
+
+    private void loadHours(){
+       String hours[] = preferences.getString("hours","").split(",");
+       sundayFrom.setText(hours[0]); sundayTo.setText(hours[1]);
+       mondayFrom.setText(hours[2]); mondayTo.setText(hours[3]);
+       tuesdayFrom.setText(hours[4]); tuesdayTo.setText(hours[5]);
+       wednesdayFrom.setText(hours[6]); wednesdayTo.setText(hours[7]);
+       thursdayFrom.setText(hours[8]); thursdayTo.setText(hours[9]);
+       fridayFrom.setText(hours[10]); fridayTo.setText(hours[11]);
+       saturdayFrom.setText(hours[12]); saturdayTo.setText(hours[13]);
     }
 
 

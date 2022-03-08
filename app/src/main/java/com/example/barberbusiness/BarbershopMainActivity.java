@@ -34,11 +34,11 @@ public class BarbershopMainActivity extends AppCompatActivity {
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnItemSelectedListener(navListener);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SalonFragment()).commit();
-
         preferences = getSharedPreferences("UserPrefs" , Context.MODE_PRIVATE);
-
         getInfoFromDB(); //get info of barbershop
+
+
+
     }
 
     private NavigationBarView.OnItemSelectedListener navListener = new NavigationBarView.OnItemSelectedListener() {
@@ -65,6 +65,8 @@ public class BarbershopMainActivity extends AppCompatActivity {
     };
 
     private void getInfoFromDB(){ //get barbershop info from DB to store it locally
+
+        Log.d("php", "getInfoFromDB: Phone Number = " + getIntent().getExtras().getString("phonenumber"));
 
             Handler handler = new Handler(Looper.getMainLooper());
             handler.post(new Runnable() {
@@ -103,7 +105,9 @@ public class BarbershopMainActivity extends AppCompatActivity {
         editor.putString("hours" , column[4]);
         editor.putString("image" , column[5]);
         editor.putString("password" , column[6]);
-        editor.commit();
+        editor.apply();
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SalonFragment()).commit();
 
     }
 
