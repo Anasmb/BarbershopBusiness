@@ -166,46 +166,46 @@ public class TimeActivity extends AppCompatActivity implements View.OnClickListe
     private void timePickerToEditText(View view, int hour, int minute, String AM_PM){
         switch (view.getId()){
             case R.id.sundayFromEditText:
-                sundayFrom.setText(hour + ":" + minute + AM_PM);
+                sundayFrom.setText(String.format("%02d:%02d" , hour , minute) + " " + AM_PM);
                 break;
             case R.id.sundayToEditText:
-                sundayTo.setText(hour + ":" + minute + AM_PM);
+                sundayTo.setText(String.format("%02d:%02d" , hour , minute) + " " + AM_PM);
                 break;
             case R.id.mondayFromEditText:
-                mondayFrom.setText(hour + ":" + minute + AM_PM);
+                mondayFrom.setText(String.format("%02d:%02d" , hour , minute) + " " + AM_PM);
                 break;
             case R.id.mondayToEditText:
-                mondayTo.setText(hour + ":" + minute + AM_PM);
+                mondayTo.setText(String.format("%02d:%02d" , hour , minute) + " " + AM_PM);
                 break;
             case R.id.tuesdayFromEditText:
-                tuesdayFrom.setText(hour + ":" + minute + AM_PM);
+                tuesdayFrom.setText(String.format("%02d:%02d" , hour , minute) + " " + AM_PM);
                 break;
             case R.id.tuesdayToEditText:
-                tuesdayTo.setText(hour + ":" + minute + AM_PM);
+                tuesdayTo.setText(String.format("%02d:%02d" , hour , minute) + " " + AM_PM);
                 break;
             case R.id.wednesdayFromEditText:
-                wednesdayFrom.setText(hour + ":" + minute + AM_PM);
+                wednesdayFrom.setText(String.format("%02d:%02d" , hour , minute) + " " + AM_PM);
                 break;
             case R.id.wednesdayToEditText:
-                wednesdayTo.setText(hour + ":" + minute + AM_PM);
+                wednesdayTo.setText(String.format("%02d:%02d" , hour , minute) + " " + AM_PM);
                 break;
             case R.id.thursdayFromEditText:
-                thursdayFrom.setText(hour + ":" + minute + AM_PM);
+                thursdayFrom.setText(String.format("%02d:%02d" , hour , minute) + " " + AM_PM);
                 break;
             case R.id.thursdayToEditText:
-                thursdayTo.setText(hour + ":" + minute + AM_PM);
+                thursdayTo.setText(String.format("%02d:%02d" , hour , minute) + " " + AM_PM);
                 break;
             case R.id.fridayFromEditText:
-                fridayFrom.setText(hour + ":" + minute + AM_PM);
+                fridayFrom.setText(String.format("%02d:%02d" , hour , minute) + " " + AM_PM);
                 break;
             case R.id.fridayToEditText:
-                fridayTo.setText(hour + ":" + minute + AM_PM);
+                fridayTo.setText(String.format("%02d:%02d" , hour , minute) + " " + AM_PM);
                 break;
             case R.id.saturdayFromEditText:
-               saturdayFrom.setText(hour + ":" + minute + AM_PM);
+               saturdayFrom.setText(String.format("%02d:%02d" , hour , minute) + " " + AM_PM);
                 break;
             case R.id.saturdayToEditText:
-                saturdayTo.setText(hour + ":" + minute + AM_PM);
+                saturdayTo.setText(String.format("%02d:%02d" , hour , minute) + " " + AM_PM);
                 break;
 
         }

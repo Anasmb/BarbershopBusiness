@@ -64,7 +64,7 @@
                     android:id="@+id/sundayFromLayout"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     app:startIconTint="#9C9C9C"
-                    android:layout_width="100dp"
+                    android:layout_width="101dp"
                     android:layout_height="57dp"
                     android:layout_marginHorizontal="2dp"
                     android:hint="From"
@@ -91,7 +91,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     app:startIconTint="#9C9C9C"
-                    android:layout_width="100dp"
+                    android:layout_width="101dp"
                     android:layout_height="57dp"
                     android:layout_marginHorizontal="2dp"
                     android:hint="To"
@@ -142,7 +142,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     app:startIconTint="#9C9C9C"
-                    android:layout_width="100dp"
+                    android:layout_width="101dp"
                     android:layout_height="57dp"
                     android:layout_marginHorizontal="2dp"
                     android:hint="From"
@@ -169,7 +169,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     app:startIconTint="#9C9C9C"
-                    android:layout_width="100dp"
+                    android:layout_width="101dp"
                     android:layout_height="57dp"
                     android:layout_marginHorizontal="2dp"
                     android:hint="To"
@@ -221,7 +221,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     app:startIconTint="#9C9C9C"
-                    android:layout_width="100dp"
+                    android:layout_width="101dp"
                     android:layout_height="57dp"
                     android:layout_marginHorizontal="2dp"
                     android:hint="From"
@@ -248,7 +248,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     app:startIconTint="#9C9C9C"
-                    android:layout_width="100dp"
+                    android:layout_width="101dp"
                     android:layout_height="57dp"
                     android:layout_marginHorizontal="2dp"
                     android:hint="To"
@@ -300,7 +300,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     app:startIconTint="#9C9C9C"
-                    android:layout_width="100dp"
+                    android:layout_width="101dp"
                     android:layout_height="57dp"
                     android:layout_marginHorizontal="2dp"
                     android:hint="From"
@@ -327,7 +327,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     app:startIconTint="#9C9C9C"
-                    android:layout_width="100dp"
+                    android:layout_width="101dp"
                     android:layout_height="57dp"
                     android:layout_marginHorizontal="2dp"
                     android:hint="To"
@@ -379,7 +379,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     app:startIconTint="#9C9C9C"
-                    android:layout_width="100dp"
+                    android:layout_width="101dp"
                     android:layout_height="57dp"
                     android:layout_marginHorizontal="2dp"
                     android:hint="From"
@@ -406,7 +406,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     app:startIconTint="#9C9C9C"
-                    android:layout_width="100dp"
+                    android:layout_width="101dp"
                     android:layout_height="57dp"
                     android:layout_marginHorizontal="2dp"
                     android:hint="To"
@@ -458,7 +458,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     app:startIconTint="#9C9C9C"
-                    android:layout_width="100dp"
+                    android:layout_width="101dp"
                     android:layout_height="57dp"
                     android:layout_marginHorizontal="2dp"
                     android:hint="From"
@@ -485,7 +485,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     app:startIconTint="#9C9C9C"
-                    android:layout_width="100dp"
+                    android:layout_width="101dp"
                     android:layout_height="57dp"
                     android:layout_marginHorizontal="2dp"
                     android:hint="To"
@@ -537,7 +537,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     app:startIconTint="#9C9C9C"
-                    android:layout_width="100dp"
+                    android:layout_width="101dp"
                     android:layout_height="57dp"
                     android:layout_marginHorizontal="2dp"
                     android:hint="From"
@@ -564,7 +564,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     app:startIconTint="#9C9C9C"
-                    android:layout_width="100dp"
+                    android:layout_width="101dp"
                     android:layout_height="57dp"
                     android:layout_marginHorizontal="2dp"
                     android:hint="To"
