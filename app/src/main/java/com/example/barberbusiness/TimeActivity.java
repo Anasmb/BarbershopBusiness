@@ -33,7 +33,6 @@ import org.json.JSONObject;
 
 public class TimeActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private TimePickerDialog timePickerDialog;
     private TextInputEditText sundayFrom,sundayTo, mondayFrom, mondayTo, tuesdayFrom, tuesdayTo,
             wednesdayFrom, wednesdayTo, thursdayFrom, thursdayTo, fridayFrom, fridayTo, saturdayFrom, saturdayTo;
 
@@ -68,7 +67,7 @@ public class TimeActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) { // clickListener for all days editText
-        timePickerDialog = new TimePickerDialog(TimeActivity.this, new TimePickerDialog.OnTimeSetListener() {
+        TimePickerDialog timePickerDialog = new TimePickerDialog(TimeActivity.this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
                 String AM_PM ;

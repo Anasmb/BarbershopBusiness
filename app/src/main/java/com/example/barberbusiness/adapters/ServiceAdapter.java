@@ -1,4 +1,4 @@
-package com.example.barberbusiness;
+package com.example.barberbusiness.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.barberbusiness.R;
+import com.example.barberbusiness.items.ServiceItem;
 
 import org.jetbrains.annotations.NotNull;
 

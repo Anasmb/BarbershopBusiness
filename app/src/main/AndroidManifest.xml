@@ -22,9 +22,9 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".AddBarbershopActivity" />
-        <activity android:name=".AdminMainActivity" />
-        <activity android:name=".AdminLoginActivity" />
+        <activity android:name=".admin.AddBarbershopActivity" />
+        <activity android:name=".admin.AdminMainActivity" />
+        <activity android:name=".admin.AdminLoginActivity" />
         <activity android:name=".TimeActivity" />
         <activity android:name=".AddServiceActivity" />
         <activity android:name=".ServiceActivity" />

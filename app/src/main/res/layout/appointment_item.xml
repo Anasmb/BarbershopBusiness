@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="4dp"
+    app:cardUseCompatPadding="true"
+    android:background="#F1F1F1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="4dp">
+
+            <ImageView
+                android:id="@+id/appointment_person_img"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_baseline_person_24" />
+
+            <TextView
+                android:id="@+id/appointmentCustomerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:text="Anas Bawazir"
+                android:textColor="@color/black"
+                android:fontFamily="@font/roboto_bold"
+                android:textSize="14dp"
+                android:layout_toRightOf="@id/appointment_person_img" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total: "
+                android:textColor="@color/black"
+                android:fontFamily="@font/roboto_bold"
+                android:textSize="14dp"
+                android:layout_toLeftOf="@id/appointmentPriceTxt"/>
+
+            <TextView
+                android:id="@+id/appointmentPriceTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="115"
+                android:textColor="#00A521"
+                android:fontFamily="@font/roboto_bold"
+                android:textSize="14dp"
+                android:layout_alignParentRight="true" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="4dp">
+
+            <ImageView
+                android:id="@+id/appointment_barber_img"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/barber_chair"
+                android:tint="#7A7A7A"/>
+
+            <TextView
+                android:id="@+id/appointmentBarber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:text="Mohammed"
+                android:textColor="@color/black"
+                android:fontFamily="@font/roboto_bold"
+                android:textSize="14dp"
+                android:layout_toRightOf="@id/appointment_barber_img"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="4dp">
+
+            <ImageView
+                android:id="@+id/appointment_time_img"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_baseline_access_time_24"/>
+
+            <TextView
+                android:id="@+id/appointmentDateTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:text="20/3/2022 , 09:45 PM"
+                android:textColor="@color/black"
+                android:fontFamily="@font/roboto_bold"
+                android:textSize="14dp"
+                android:layout_toRightOf="@id/appointment_time_img"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="4dp">
+
+            <ImageView
+                android:id="@+id/appointment_location_img"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_baseline_location_on_24" />
+
+            <TextView
+                android:id="@+id/appointmentServiceLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:text="At Barbershop"
+                android:textColor="@color/black"
+                android:fontFamily="@font/roboto_bold"
+                android:textSize="14dp"
+                android:layout_toRightOf="@id/appointment_location_img"/>
+
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="4dp">
+
+            <ImageView
+                android:id="@+id/appointment_services_img"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_content_cut_black_24dp"
+                android:tint="#7A7A7A"/>
+
+            <TextView
+                android:id="@+id/appointmentServicesText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:text="Hair cut, face mask, Beard Trim, facemask, Hair cut, face mask, Beard Trim, facemask"
+                android:textColor="@color/black"
+                android:fontFamily="@font/roboto_bold"
+                android:textSize="14dp"
+                android:layout_toRightOf="@+id/appointment_services_img"/>
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="6dp"
+            android:background="@android:color/darker_gray"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/appointmentConfirmText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Confirm"
+                android:textColor="#00A521"
+                android:fontFamily="@font/roboto_bold"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/appointmentFinishText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Finish"
+                android:textColor="#00AFFF"
+                android:fontFamily="@font/roboto_bold"
+                android:textSize="18dp"
+                android:layout_centerInParent="true"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/appointmentDeclineText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Declin"
+                android:textColor="#A50000"
+                android:fontFamily="@font/roboto_bold"
+                android:textSize="18dp"
+                android:layout_alignParentRight="true"/>
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

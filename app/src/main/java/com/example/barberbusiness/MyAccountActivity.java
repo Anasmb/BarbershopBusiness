@@ -20,10 +20,7 @@ public class MyAccountActivity extends AppCompatActivity {
 
     private ImageView backBtn;
     private MaterialButton saveButton;
-    private TextInputEditText shopName;
-    private TextInputEditText email;
-    private TextInputEditText phoneNumber;
-    private TextInputEditText password;
+    private TextInputEditText shopName , email, phoneNumber ,password;
     SharedPreferences preferences;
 
     @Override

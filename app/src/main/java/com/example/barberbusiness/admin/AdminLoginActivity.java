@@ -1,4 +1,4 @@
-package com.example.barberbusiness;
+package com.example.barberbusiness.admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.barberbusiness.BarbershopLoginActivity;
+import com.example.barberbusiness.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;

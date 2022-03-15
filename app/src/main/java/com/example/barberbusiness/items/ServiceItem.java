@@ -1,4 +1,4 @@
-package com.example.barberbusiness;
+package com.example.barberbusiness.items;
 
 public class ServiceItem {
 
