@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.barberbusiness.R;
+import com.example.barberbusiness.items.BarberItem;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -18,9 +19,9 @@ import java.util.List;
 public class BarberAdapter extends RecyclerView.Adapter<BarberAdapter.BarberViewHolder> {
 
     private Context mContext;
-    private List<String> barberItemList;
+    private List<BarberItem> barberItemList;
 
-    public BarberAdapter(Context mContext, List<String> barberItemList) {
+    public BarberAdapter(Context mContext, List<BarberItem> barberItemList) {
         this.mContext = mContext;
         this.barberItemList = barberItemList;
     }
@@ -38,8 +39,8 @@ public class BarberAdapter extends RecyclerView.Adapter<BarberAdapter.BarberView
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull BarberAdapter.BarberViewHolder holder, int position) {
-        String barberItem = barberItemList.get(position);
-        holder.barberName.setText(barberItem);
+        BarberItem barberItem = barberItemList.get(position);
+        holder.barberName.setText(barberItem.getBarberName());
     }
 
     public int getItemCount() {

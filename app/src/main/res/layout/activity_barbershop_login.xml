@@ -80,17 +80,6 @@
             android:layout_marginVertical="24dp"
             android:text="LOG in"/>
 
-        <TextView
-            android:id="@+id/adminTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Admin ?"
-            android:textColor="@color/skyBlue"
-            android:fontFamily="@font/roboto_bold"
-            android:textAlignment="center"/>
-
-
 
     </LinearLayout>
 

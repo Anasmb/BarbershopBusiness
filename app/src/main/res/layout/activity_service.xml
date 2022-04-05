@@ -57,15 +57,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Duration"
-            android:fontFamily="@font/roboto_bold"
-            android:textSize="16dp"
-            android:textColor="@color/black"
-            android:layout_centerHorizontal="true"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="Price"
             android:fontFamily="@font/roboto_bold"
             android:textSize="16dp"

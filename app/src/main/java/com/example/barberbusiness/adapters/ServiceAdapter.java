@@ -42,7 +42,6 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceV
         ServiceItem serviceItem = serviceItemList.get(position);
 
         holder.serviceName.setText(serviceItem.getServiceName());
-        holder.duration.setText(serviceItem.getDuration());
         holder.price.setText(Double.toString(serviceItem.getPrice()));
     }
 
@@ -54,13 +53,11 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceV
     class ServiceViewHolder extends RecyclerView.ViewHolder {
 
         TextView serviceName;
-        TextView duration;
         TextView price;
 
         public ServiceViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
             serviceName = itemView.findViewById(R.id.serviceNameTextView);
-            duration = itemView.findViewById(R.id.serviceDurationTextView);
             price = itemView.findViewById(R.id.servicePriceTextView);
         }
 

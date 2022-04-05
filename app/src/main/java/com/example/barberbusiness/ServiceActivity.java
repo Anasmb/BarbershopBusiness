@@ -1,13 +1,20 @@
 package com.example.barberbusiness;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Canvas;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -20,7 +27,9 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.barberbusiness.adapters.ServiceAdapter;
 import com.example.barberbusiness.items.ServiceItem;
+import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,9 +37,11 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
+
 public class ServiceActivity extends AppCompatActivity {
 
-    private String SQL_URL = "http://192.168.100.6/barbershop-php/getService.php";
+    private String SQL_URL = "http://192.168.100.6/barbershop-php/service/getService.php";
     private ImageView addButton;
     private ImageView backButton;
     private RecyclerView recyclerView;
@@ -49,6 +60,7 @@ public class ServiceActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.serviceRecyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL));
 
         addButton = findViewById(R.id.addServiceButton);
         addButton.setOnClickListener(addButtonClick);
@@ -56,6 +68,9 @@ public class ServiceActivity extends AppCompatActivity {
         backButton.setOnClickListener(backButtonClick);
 
         loadServices();
+
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback); //handle swiping the item in recycle View
+        itemTouchHelper.attachToRecyclerView(recyclerView);
     }
 
 
@@ -75,21 +90,19 @@ public class ServiceActivity extends AppCompatActivity {
     };
 
     private void loadServices(){
-        Log.d("debug", "load services from DB");
         StringRequest stringRequest = new StringRequest(Request.Method.POST, SQL_URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                Log.d("php", response);
                 try {
                     JSONArray services = new JSONArray(response);
                     for (int i = 0 ; i < services.length() ; i++){
                         JSONObject serviceObject = services.getJSONObject(i);
+                        int serviceID = serviceObject.getInt("serviceID");
                         String name = serviceObject.getString("name");
-                        String duration = serviceObject.getString("duration");
                         double price = serviceObject.getDouble("price");
-                        ServiceItem serviceItem = new ServiceItem(name,duration,price);
+                        ServiceItem serviceItem = new ServiceItem(serviceID,name,price);
                         serviceItemList.add(serviceItem);
-                        Log.d("debug", "onResponse: Service Name = " + name + " Duration = " + duration + " Price = " + price);
-                        Log.d("debug", "onResponse from list: Service Name = " + serviceItem.getServiceName() + " Duration = " + serviceItem.getDuration() + " Price = " + serviceItem.getPrice());
                     }
 
                     adapter = new ServiceAdapter(getApplicationContext(), serviceItemList);
@@ -107,6 +120,62 @@ public class ServiceActivity extends AppCompatActivity {
         });
 
         Volley.newRequestQueue(this).add(stringRequest);
+    }
+
+    ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT) { //handle swiping the item in recycle View
+        @Override
+        public boolean onMove(@NonNull @NotNull RecyclerView recyclerView, @NonNull @NotNull RecyclerView.ViewHolder viewHolder, @NonNull @NotNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull @NotNull RecyclerView.ViewHolder viewHolder, int direction) {
+            if(direction == ItemTouchHelper.LEFT) {
+                int position = viewHolder.getAdapterPosition();
+                deleteServiceFromDB(serviceItemList.get(position).getServiceID());
+                serviceItemList.remove(position);
+                adapter.notifyItemRemoved(position);
+
+            }
+        }
+
+        @Override
+        public void onChildDraw(@NonNull @NotNull Canvas c, @NonNull @NotNull RecyclerView recyclerView, @NonNull @NotNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+            new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+                    .addSwipeLeftBackgroundColor(Color.parseColor("#BB0000"))
+                    .addSwipeLeftActionIcon(R.drawable.ic_baseline_delete_24)
+                    .create()
+                    .decorate();
+            super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+        }
+
+    };;
+
+    private void deleteServiceFromDB(int id){
+        Handler handler = new Handler(Looper.getMainLooper());
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+
+                String[] field = new String[1];
+                field[0] = "serviceID";
+                //Creating array for data
+                String[] data = new String[1];
+                data[0] = String.valueOf(id);
+                PutData putData = new PutData("http://192.168.100.6/barbershop-php/service/deleteService.php", "POST", field, data);
+                if (putData.startPut()) {
+                    if (putData.onComplete()) {
+                        String result = putData.getResult();
+                        if (result.equals("Add Success")) {
+                            Log.d("php", result);
+                            finish();
+                        } else { // All fields are required
+                            Log.d("php", result);
+                        }
+                    }
+                }
+            }
+        });
     }
 
 

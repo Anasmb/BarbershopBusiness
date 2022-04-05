@@ -101,6 +101,24 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="58dp"
+            android:layout_marginTop="10dp"
+            android:hint="Address"
+            android:textColorHint="#9C9C9C">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/myAccountAddressEditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="text"
+                android:singleLine="true"
+                android:focusable="false"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
             android:layout_marginVertical="10dp"
             android:hint="Password"
             android:textColorHint="#9C9C9C">

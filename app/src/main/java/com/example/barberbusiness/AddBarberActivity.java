@@ -72,6 +72,8 @@ public class AddBarberActivity extends AppCompatActivity {
                                    if (result.equals("Add Success")) {
                                        Log.d("php", result);
                                        Toast.makeText(getApplicationContext(), "Barber Added Successfully", Toast.LENGTH_SHORT).show();
+                                       Intent intent = new Intent(getApplicationContext(), BarbersActivity.class);
+                                       startActivity(intent); //TODO FIX ME, issue when pressing back
                                        finish();
                                    } else { // All fields are required
                                        Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();

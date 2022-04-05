@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.barberbusiness.admin.AdminLoginActivity;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
@@ -20,7 +19,6 @@ public class BarbershopLoginActivity extends AppCompatActivity {
 
     private TextInputEditText phoneNumber, password;
     private MaterialButton loginButton;
-    private TextView adminTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +30,6 @@ public class BarbershopLoginActivity extends AppCompatActivity {
 
         loginButton = findViewById(R.id.loginButton);
         loginButton.setOnClickListener(loginListener);
-        adminTxt = findViewById(R.id.adminTextView);
-        adminTxt.setOnClickListener(adminTextListener);
     }
 
     View.OnClickListener loginListener = new View.OnClickListener() {
@@ -81,13 +77,4 @@ public class BarbershopLoginActivity extends AppCompatActivity {
         }
     };
 
-    View.OnClickListener adminTextListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(getApplicationContext(), AdminLoginActivity.class);
-            finish();
-            startActivity(intent);
-
-        }
-    };
 }

@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -16,7 +14,6 @@ import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
 import android.os.Looper;
-import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -30,9 +27,9 @@ import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 public class SalonFragment extends Fragment {
 
@@ -43,7 +40,9 @@ public class SalonFragment extends Fragment {
     private TextView shopAddress;
     private ImageView barbershopImage;
     int SELECT_IMAGE = 1;
-    SharedPreferences preferences;
+    private SharedPreferences preferences;
+    private Bitmap bitmap;
+    private String encodedImg;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,  Bundle savedInstanceState) {
@@ -71,7 +70,7 @@ public class SalonFragment extends Fragment {
         String address[] = preferences.getString("address" , "").split("/"); //address with the coordinates
         shopAddress.setText(address[0]);  // set the address only without the coordinates
 
-        attachBarbershopImage(preferences.getString("image", ""));
+        loadBarbershopImage(preferences.getString("image", ""));
 
     }
 
@@ -106,36 +105,40 @@ public class SalonFragment extends Fragment {
             Intent intent = new Intent();
             intent.setType("image/*");
             intent.setAction(Intent.ACTION_GET_CONTENT);
-            startActivityForResult(Intent.createChooser(intent, "Title"),SELECT_IMAGE);
+            startActivityForResult(Intent.createChooser(intent, "Select Image"),SELECT_IMAGE);
         }
     };
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) { // choose image from gallery
         super.onActivityResult(requestCode, resultCode, data);
-        String image_str = null;
-
         if(requestCode == 1){
-            Uri uri = data.getData();
-            barbershopImage.setImageURI(uri);
-            byte[] byteArray = null;
-            String image = null;
+
+            Uri filePath = data.getData();
 
             try {
-                  Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getActivity().getContentResolver(), uri);
-                 ByteArrayOutputStream outStreamArray = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, outStreamArray);
-                byteArray = outStreamArray.toByteArray();
-                 image = Base64.encodeToString(byteArray, Base64.DEFAULT);
-            } catch (IOException e) {
+                InputStream inputStream = getContext().getContentResolver().openInputStream(filePath);
+                bitmap = BitmapFactory.decodeStream(inputStream);
+                barbershopImage.setImageBitmap(bitmap);
+
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG,100,stream);
+                byte[] imageBytes = stream.toByteArray();
+                encodedImg = Base64.encodeToString(imageBytes,Base64.DEFAULT);
+
+                saveImageToDB();
+
+            } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
 
-            saveImageToDB(image);
-        }
-    }
 
-    private void saveImageToDB(String image_str){
+        }
+
+        }
+
+
+    private void saveImageToDB(){
 
         Handler handler = new Handler(Looper.getMainLooper());
         handler.post(new Runnable() {
@@ -143,12 +146,12 @@ public class SalonFragment extends Fragment {
             public void run() {
 
                 String[] field = new String[2];
-                field[0] = "BarbershopID";
-                field[1] = "Image";
+                field[0] = "barbershopID";
+                field[1] = "image";
 
                 String[] data = new String[2];
-                data[0] = "1";
-                data[1] = image_str;
+                data[0] = preferences.getString("id","");
+                data[1] = encodedImg;
 
                 PutData putData = new PutData("http://192.168.100.6/barbershop-php/saveShopImage.php", "POST", field, data);
                 if (putData.startPut()) {
@@ -163,9 +166,9 @@ public class SalonFragment extends Fragment {
 
     }
 
-   private void attachBarbershopImage(String b64){ //TODO FINISH IMAGE ISSUE
+   private void loadBarbershopImage(String b64){
        byte[] imageAsBytes = Base64.decode(b64.getBytes(), Base64.DEFAULT);
-      Bitmap bitmap = BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length);
+       Bitmap bitmap = BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length);
        barbershopImage.setImageBitmap(bitmap);
 
        Log.d("debug", "attachBarbershopImage: " + b64);

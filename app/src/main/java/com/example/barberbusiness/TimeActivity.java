@@ -284,14 +284,23 @@ public class TimeActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void loadHours(){
-       String hours[] = preferences.getString("hours","").split(",");
-       sundayFrom.setText(hours[0]); sundayTo.setText(hours[1]);
-       mondayFrom.setText(hours[2]); mondayTo.setText(hours[3]);
-       tuesdayFrom.setText(hours[4]); tuesdayTo.setText(hours[5]);
-       wednesdayFrom.setText(hours[6]); wednesdayTo.setText(hours[7]);
-       thursdayFrom.setText(hours[8]); thursdayTo.setText(hours[9]);
-       fridayFrom.setText(hours[10]); fridayTo.setText(hours[11]);
-       saturdayFrom.setText(hours[12]); saturdayTo.setText(hours[13]);
+        if(openingHours != null) {
+            String hours[] = preferences.getString("hours", "").split(",");
+            sundayFrom.setText(hours[0]);
+            sundayTo.setText(hours[1]);
+            mondayFrom.setText(hours[2]);
+            mondayTo.setText(hours[3]);
+            tuesdayFrom.setText(hours[4]);
+            tuesdayTo.setText(hours[5]);
+            wednesdayFrom.setText(hours[6]);
+            wednesdayTo.setText(hours[7]);
+            thursdayFrom.setText(hours[8]);
+            thursdayTo.setText(hours[9]);
+            fridayFrom.setText(hours[10]);
+            fridayTo.setText(hours[11]);
+            saturdayFrom.setText(hours[12]);
+            saturdayTo.setText(hours[13]);
+        }
     }
 
 

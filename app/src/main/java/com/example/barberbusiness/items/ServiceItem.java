@@ -2,22 +2,22 @@ package com.example.barberbusiness.items;
 
 public class ServiceItem {
 
+    private int serviceID;
     private String serviceName;
-    private String duration;
     private double price;
 
-    public ServiceItem(String serviceName, String duration, double price) {
+    public ServiceItem(int serviceID , String serviceName, double price) {
+        this.serviceID = serviceID;
         this.serviceName = serviceName;
-        this.duration = duration;
         this.price = price;
+    }
+
+    public int getServiceID() {
+        return serviceID;
     }
 
     public String getServiceName() {
         return serviceName;
-    }
-
-    public String getDuration() {
-        return duration;
     }
 
     public double getPrice() {

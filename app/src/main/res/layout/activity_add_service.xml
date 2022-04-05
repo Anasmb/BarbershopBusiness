@@ -48,29 +48,10 @@
             android:layout_marginHorizontal="16dp"
             android:inputType="text"
             android:singleLine="true"
-            android:maxLength="12"/>
+            android:maxLength="20"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:startIconTint="#9C9C9C"
-        android:layout_width="match_parent"
-        android:layout_height="57dp"
-        android:layout_marginVertical="8dp"
-        android:hint="Duration (minutes)"
-        android:textColorHint="#9C9C9C">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/serviceDurationEditText"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginHorizontal="16dp"
-            android:inputType="number"
-            android:singleLine="true"
-            android:maxLength="3"/>
-
-    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
