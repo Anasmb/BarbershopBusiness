@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Context;
 import android.content.Intent;
@@ -28,6 +29,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.barberbusiness.adapters.BarberAdapter;
+import com.example.barberbusiness.adapters.ServiceAdapter;
 import com.example.barberbusiness.items.BarberItem;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
@@ -49,8 +51,9 @@ public class BarbersActivity extends AppCompatActivity {
     private ImageView backButton;
     private RecyclerView recyclerView;
     private BarberAdapter adapter;
-    List<BarberItem> barberItemList;
-    SharedPreferences preferences;
+    private List<BarberItem> barberItemList;
+    private SharedPreferences preferences;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +72,8 @@ public class BarbersActivity extends AppCompatActivity {
         addButton.setOnClickListener(addButtonClick);
         backButton = findViewById(R.id.barbersBackButton);
         backButton.setOnClickListener(backButtonClick);
-
+        swipeRefreshLayout = findViewById(R.id.barberRefresh);
+        swipeRefreshLayout.setOnRefreshListener(refreshListener);
 
         SQL_URL += "?BarbershopID=" + preferences.getString("id","");
 
@@ -92,6 +96,17 @@ public class BarbersActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             finish();
+        }
+    };
+
+    private SwipeRefreshLayout.OnRefreshListener refreshListener = new SwipeRefreshLayout.OnRefreshListener() {
+        @Override
+        public void onRefresh() {
+            barberItemList.clear();
+            adapter = new BarberAdapter(getApplicationContext(), barberItemList);
+            recyclerView.setAdapter(adapter);
+            loadBarbers();
+            swipeRefreshLayout.setRefreshing(false);
         }
     };
 

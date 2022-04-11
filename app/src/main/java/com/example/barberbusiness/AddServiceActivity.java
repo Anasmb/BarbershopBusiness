@@ -69,8 +69,6 @@ public class AddServiceActivity extends AppCompatActivity {
                                 if (result.equals("Add Success")) {
                                     Log.d("php", result);
                                     Toast.makeText(getApplicationContext(), "Service Added Successfully", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(getApplicationContext(), ServiceActivity.class);
-                                    startActivity(intent); //TODO FIX ME, issue when pressing back
                                     finish();
                                 } else { // All fields are required
                                     Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();

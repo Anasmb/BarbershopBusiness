@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Context;
 import android.content.Intent;
@@ -47,7 +48,8 @@ public class ServiceActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ServiceAdapter adapter;
     private List<ServiceItem> serviceItemList;
-    SharedPreferences preferences;
+    private SharedPreferences preferences;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +68,8 @@ public class ServiceActivity extends AppCompatActivity {
         addButton.setOnClickListener(addButtonClick);
         backButton = findViewById(R.id.serviceBackButton);
         backButton.setOnClickListener(backButtonClick);
+        swipeRefreshLayout = findViewById(R.id.serviceRefresh);
+        swipeRefreshLayout.setOnRefreshListener(refreshListener);
 
         loadServices();
 
@@ -89,6 +93,17 @@ public class ServiceActivity extends AppCompatActivity {
         }
     };
 
+    private SwipeRefreshLayout.OnRefreshListener refreshListener = new SwipeRefreshLayout.OnRefreshListener() {
+        @Override
+        public void onRefresh() {
+            serviceItemList.clear();
+            adapter = new ServiceAdapter(getApplicationContext(), serviceItemList);
+            recyclerView.setAdapter(adapter);
+            loadServices();
+            swipeRefreshLayout.setRefreshing(false);
+        }
+    };
+
     private void loadServices(){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, SQL_URL, new Response.Listener<String>() {
             @Override
@@ -104,7 +119,6 @@ public class ServiceActivity extends AppCompatActivity {
                         ServiceItem serviceItem = new ServiceItem(serviceID,name,price);
                         serviceItemList.add(serviceItem);
                     }
-
                     adapter = new ServiceAdapter(getApplicationContext(), serviceItemList);
                     recyclerView.setAdapter(adapter);
 
