@@ -37,6 +37,7 @@ public class SalonFragment extends Fragment {
     private LinearLayout serviceLayout ;
     private LinearLayout timeLayout ;
     private LinearLayout feedbackLayout;
+    private LinearLayout galleryLayout;
     private TextView shopName;
     private TextView shopAddress;
     private ImageView barbershopImage;
@@ -66,6 +67,9 @@ public class SalonFragment extends Fragment {
         barbershopImage.setOnClickListener(barbershopImageClicked);
         feedbackLayout = view.findViewById(R.id.feedbackLayout);
         feedbackLayout.setOnClickListener(feedbackLayoutClick);
+        galleryLayout = view.findViewById(R.id.galleryLayout);
+        galleryLayout.setOnClickListener(galleryLayoutClick);
+
         shopName = view.findViewById(R.id.shopNameText);
         shopName.setText(preferences.getString("shopName" , ""));
         shopAddress = view.findViewById(R.id.shopAddressText);
@@ -106,6 +110,14 @@ public class SalonFragment extends Fragment {
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(getContext(),FeedbackActivity.class);
+            startActivity(intent);
+        }
+    };
+
+    View.OnClickListener galleryLayoutClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(getContext(),GalleryActivity.class);
             startActivity(intent);
         }
     };

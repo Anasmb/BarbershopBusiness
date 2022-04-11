@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -32,6 +33,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     private ActivityMapsBinding binding;
     private TextView saveLocationText;
+    private ImageView backBtn;
     private double latitude, longitude; // store the coordinates
     private Geocoder geocoder;
     List<Address> address; // store the address from the google map
@@ -53,7 +55,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+        backBtn = findViewById(R.id.maps_backButton);
+        backBtn.setOnClickListener(backBtnListener);
+
     }
+
+    private View.OnClickListener backBtnListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            finish();
+        }
+    };
 
     private View.OnClickListener saveLocationClick = new View.OnClickListener() {
         @Override

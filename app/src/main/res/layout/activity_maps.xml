@@ -15,6 +15,13 @@
         android:padding="16dp"
         android:background="#00AFAE">
 
+        <ImageView
+            android:id="@+id/maps_backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_arrow_back_32"
+            android:tag="previous"/>
+
         <TextView
             android:id="@+id/saveLocationText"
             android:layout_width="wrap_content"

@@ -67,15 +67,16 @@ public class MyAccountActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) { // get data from google map activity
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == 1){
-            String result = data.getStringExtra("address");
-            String coordinates[] = result.split("/");
-            address.setText(coordinates[0]);
-            latitude = coordinates[1];
-            longitude = coordinates[2];
-            barberShopAddress = coordinates[0] + "/" + latitude + "/" + longitude;
-            Log.d("debug", "onActivityResult: latitude = " + latitude + "  longitude = " + longitude);
-
+        if (requestCode == 1){ //TODO FIX MAP BACK PROBLEM
+            if(data != null){
+                String result = data.getStringExtra("address");
+                String coordinates[] = result.split("/");
+                address.setText(coordinates[0]);
+                latitude = coordinates[1];
+                longitude = coordinates[2];
+                barberShopAddress = coordinates[0] + "/" + latitude + "/" + longitude;
+                Log.d("debug", "onActivityResult: latitude = " + latitude + "  longitude = " + longitude);
+            }
         }
     }
 

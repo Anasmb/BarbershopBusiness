@@ -60,7 +60,7 @@ public class BarbershopLoginActivity extends AppCompatActivity {
                                     intent.putExtra("phonenumber" , phoneNumber.getText().toString()); //send phone number to next activity
                                     startActivity(intent);
                                     finish();
-                                    Toast.makeText(getApplicationContext(),"Login Success",Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(),"Login Success",Toast.LENGTH_SHORT).show();
                                 }
                                 else {
                                     Toast.makeText(getApplicationContext(),result,Toast.LENGTH_LONG).show();
