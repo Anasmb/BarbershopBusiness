@@ -56,7 +56,6 @@ public class AppointmentFragment extends Fragment implements  AppointmentAdapter
         recyclerView = view.findViewById(R.id.appointments_recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
         loadAppointments();
     }
 

@@ -21,7 +21,7 @@ import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 import java.nio.BufferUnderflowException;
 
-public class BarbershopMainActivity extends AppCompatActivity {
+public class BarbershopMainActivity extends AppCompatActivity { //TODO FIX WHEN DATABASE NOT AVAILABLE OR WIFI IS OFF
 
     SharedPreferences preferences;
 

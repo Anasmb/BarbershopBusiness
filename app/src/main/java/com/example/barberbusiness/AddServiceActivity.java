@@ -39,7 +39,7 @@ public class AddServiceActivity extends AppCompatActivity {
         backButton.setOnClickListener(backButtonClick);
     }
 
-    private View.OnClickListener saveButtonListener = new View.OnClickListener() { //TODO, NEW ADDED SERVICE SHOULD SHOW ON SERVICE ACTIVITY
+    private View.OnClickListener saveButtonListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
 
