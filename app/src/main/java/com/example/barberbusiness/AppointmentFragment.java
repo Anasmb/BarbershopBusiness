@@ -1,7 +1,9 @@
 package com.example.barberbusiness;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -21,6 +24,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.barberbusiness.adapters.AppointmentAdapter;
+import com.example.barberbusiness.adapters.BarberAdapter;
 import com.example.barberbusiness.items.AppointmentItem;
 
 import org.jetbrains.annotations.NotNull;
@@ -37,7 +41,8 @@ public class AppointmentFragment extends Fragment implements  AppointmentAdapter
     private RecyclerView recyclerView;
     private AppointmentAdapter adapter;
     private List<AppointmentItem> appointmentItemList;
-    SharedPreferences preferences;
+    private SharedPreferences preferences;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -52,10 +57,16 @@ public class AppointmentFragment extends Fragment implements  AppointmentAdapter
 
         SQL_URL += "?barbershopID=" + preferences.getString("id","");
 
+        swipeRefreshLayout = view.findViewById(R.id.appointmentRefresh);
+        swipeRefreshLayout.setOnRefreshListener(refreshListener);
+
         appointmentItemList = new ArrayList<>();
         recyclerView = view.findViewById(R.id.appointments_recyclerView);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setLayoutManager(linearLayoutManager);
         loadAppointments();
     }
 
@@ -101,6 +112,25 @@ public class AppointmentFragment extends Fragment implements  AppointmentAdapter
 
     @Override
     public void onItemClick(View view, int position) {
-
+        String serviceAt = appointmentItemList.get(position).getServiceAt();
+        if (serviceAt.equals("At House")){
+            String coordinates[] = appointmentItemList.get(position).getAddress().split("/"); // get the latitude and longitude
+            String uri = "http://maps.google.com/maps?q=loc:" + coordinates[1] + "," + coordinates[2];
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+            intent.setPackage("com.google.android.apps.maps");
+            startActivity(intent);
+        }
     }
+
+    private SwipeRefreshLayout.OnRefreshListener refreshListener = new SwipeRefreshLayout.OnRefreshListener() {
+        @Override
+        public void onRefresh() {
+            appointmentItemList.clear();
+            adapter = new AppointmentAdapter(getActivity(), appointmentItemList, AppointmentFragment.this::onItemClick);
+            recyclerView.setAdapter(adapter);
+            loadAppointments();
+            swipeRefreshLayout.setRefreshing(false);
+        }
+    };
+
 }
