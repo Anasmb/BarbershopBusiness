@@ -43,7 +43,7 @@ import java.util.List;
 
 public class GalleryActivity extends AppCompatActivity {
 
-    private String SQL_URL = "http://192.168.100.6/barbershop-php/getImages.php";
+    private String SQL_URL = "http://192.168.100.6/barbershop-php/images/getImages.php";
     private GridView gridView;
     private GalleryAdapter adapter;
     private List<GalleryItem> galleryItemList;
@@ -68,7 +68,6 @@ public class GalleryActivity extends AppCompatActivity {
         backBtn.setOnClickListener(backBtnListener);
         addImageBtn = findViewById(R.id.addImageButton);
         addImageBtn.setOnClickListener(addImageListener);
-
         gridView = findViewById(R.id.galleryGridView);
         gridView.setOnItemLongClickListener(gridItemListener);
 
@@ -103,7 +102,6 @@ public class GalleryActivity extends AppCompatActivity {
         }
     };
 
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) { // choose image from gallery
         super.onActivityResult(requestCode, resultCode, data);
@@ -127,7 +125,6 @@ public class GalleryActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-
         }
 
     }
@@ -147,7 +144,7 @@ public class GalleryActivity extends AppCompatActivity {
                 data[0] = preferences.getString("id","");
                 data[1] = encodedImg;
 
-                PutData putData = new PutData("http://192.168.100.6/barbershop-php/addImage.php", "POST", field, data);
+                PutData putData = new PutData("http://192.168.100.6/barbershop-php/images/addImage.php", "POST", field, data);
                 if (putData.startPut()) {
                     if (putData.onComplete()) {
                         String result = putData.getResult();
@@ -209,7 +206,7 @@ public class GalleryActivity extends AppCompatActivity {
                 data[0] = preferences.getString("id","");
                 data[1] = String.valueOf(imageID);
 
-                PutData putData = new PutData("http://192.168.100.6/barbershop-php/deleteImage.php", "POST", field, data);
+                PutData putData = new PutData("http://192.168.100.6/barbershop-php/images/deleteImage.php", "POST", field, data);
                 if (putData.startPut()) {
                     if (putData.onComplete()) {
                         String result = putData.getResult();

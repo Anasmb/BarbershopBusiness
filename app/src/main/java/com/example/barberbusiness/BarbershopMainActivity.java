@@ -14,17 +14,28 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.barberbusiness.adapters.FeedbackAdapter;
+import com.example.barberbusiness.items.FeedbackItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.vishnusivadas.advanced_httpurlconnection.FetchData;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.nio.BufferUnderflowException;
 
 public class BarbershopMainActivity extends AppCompatActivity { //TODO FIX WHEN DATABASE NOT AVAILABLE OR WIFI IS OFF
 
-    SharedPreferences preferences;
-
+    private String SQL_URL = "http://192.168.100.6/barbershop-php/barbershop/getBarbershopInfo.php";
+    private SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +46,9 @@ public class BarbershopMainActivity extends AppCompatActivity { //TODO FIX WHEN 
         bottomNav.setOnItemSelectedListener(navListener);
 
         preferences = getSharedPreferences("UserPrefs" , Context.MODE_PRIVATE);
-        getInfoFromDB(); //get info of barbershop
 
-
+        SQL_URL += "?PhoneNumber=" + getIntent().getExtras().getString("phonenumber");;
+        loadBarbershopInfo(); //get info of barbershop
 
     }
 
@@ -64,51 +75,41 @@ public class BarbershopMainActivity extends AppCompatActivity { //TODO FIX WHEN 
         }
     };
 
-    private void getInfoFromDB(){ //get barbershop info from DB to store it locally
-
-        Log.d("php", "getInfoFromDB: Phone Number = " + getIntent().getExtras().getString("phonenumber"));
-
-            Handler handler = new Handler(Looper.getMainLooper());
-            handler.post(new Runnable() {
-                @Override
-                public void run() {
-
-                    String[] field = new String[1];
-                    field[0] = "PhoneNumber";
-
-                    String[] data = new String[1];
-                    data[0] = getIntent().getExtras().getString("phonenumber"); // get phone number from login activity
-
-                    PutData putData = new PutData("http://192.168.100.6/barbershop-php/getBarbershopInfo.php", "POST", field, data);
-                    if (putData.startPut()) {
-                        if (putData.onComplete()) {
-                            String result = putData.getResult();
-                            saveInfoLocally(result);
-                            Log.d("php", result);
-                        }
+    private void loadBarbershopInfo(){ //get barbershop info from DB to store it locally
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, SQL_URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d("php", response);
+                try {
+                    JSONArray columns = new JSONArray(response);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    for (int i = 0 ; i < columns.length() ; i++){
+                        JSONObject barbershopObject = columns.getJSONObject(i);
+                        editor.putString("id" , barbershopObject.getString("BarbershopID"));
+                        editor.putString("shopName" , barbershopObject.getString("ShopName"));
+                        editor.putString("phoneNumber" , getIntent().getExtras().getString("phonenumber"));
+                        editor.putString("email" , barbershopObject.getString("Email"));
+                        editor.putString("address" , barbershopObject.getString("Address"));
+                        editor.putString("hours" , barbershopObject.getString("Hours"));
+                        editor.putString("image" , barbershopObject.getString("Image"));
+                        editor.putString("password" , barbershopObject.getString("Password"));
+                        editor.apply();
+                        Log.d("debug", "columns index = " + i);
                     }
-
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SalonFragment()).commit();
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
-            });
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) { // this method will execute if there is error
+                Log.d("php", "onErrorResponse: " + error.getMessage());
+                Toast.makeText(getApplicationContext(),"Couldn't connect to server!", Toast.LENGTH_SHORT).show();
+            }
+        });
 
-    }
-
-    private void saveInfoLocally(String info){
-
-        String column[] = info.split("\\|");
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("id" , column[0]);
-        editor.putString("shopName" , column[1]);
-        editor.putString("phoneNumber" , getIntent().getExtras().getString("phonenumber"));
-        editor.putString("email" , column[2]);
-        editor.putString("address" , column[3]);
-        editor.putString("hours" , column[4]);
-        editor.putString("image" , column[5]);
-        editor.putString("password" , column[6]);
-        editor.apply();
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SalonFragment()).commit();
-
+        Volley.newRequestQueue(this).add(stringRequest);
     }
 
 

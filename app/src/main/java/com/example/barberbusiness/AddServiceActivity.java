@@ -52,12 +52,11 @@ public class AddServiceActivity extends AppCompatActivity {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-
                         String[] field = new String[3];
                         field[0] = "Name";
                         field[1] = "Price";
                         field[2] = "BarbershopID";
-                        //Creating array for data
+
                         String[] data = new String[3];
                         data[0] = String.valueOf(serviceName.getText());
                         data[1] = String.valueOf(price.getText());
@@ -77,15 +76,12 @@ public class AddServiceActivity extends AppCompatActivity {
                                 }
                             }
                         }
-                        //End Write and Read data with URL
                     }
                 });
             } else {
                 Toast.makeText(getApplicationContext(), "All fields are required !", Toast.LENGTH_LONG).show();
             }
         }
-
-
     };
 
     View.OnClickListener backButtonClick = new View.OnClickListener() {

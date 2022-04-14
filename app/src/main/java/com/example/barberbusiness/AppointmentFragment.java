@@ -37,7 +37,7 @@ import java.util.List;
 
 public class AppointmentFragment extends Fragment implements  AppointmentAdapter.OnItemListener {
 
-    private String SQL_URL = "http://192.168.100.6/barbershop-php/getAppointment.php";
+    private String SQL_URL = "http://192.168.100.6/barbershop-php/appointment/getAppointment.php";
     private RecyclerView recyclerView;
     private AppointmentAdapter adapter;
     private List<AppointmentItem> appointmentItemList;
@@ -103,11 +103,11 @@ public class AppointmentFragment extends Fragment implements  AppointmentAdapter
             @Override
             public void onErrorResponse(VolleyError error) { // this method will execute if there is error
                 Toast.makeText(getActivity(),error.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(),"Couldn't connect to server!", Toast.LENGTH_SHORT).show();
             }
+
         });
-
         Volley.newRequestQueue(getActivity()).add(stringRequest);
-
     }
 
     @Override

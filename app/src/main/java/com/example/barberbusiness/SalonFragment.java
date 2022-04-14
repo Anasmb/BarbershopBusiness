@@ -33,13 +33,8 @@ import java.io.InputStream;
 
 public class SalonFragment extends Fragment {
 
-    private LinearLayout barbersLayout ;
-    private LinearLayout serviceLayout ;
-    private LinearLayout timeLayout ;
-    private LinearLayout feedbackLayout;
-    private LinearLayout galleryLayout;
-    private TextView shopName;
-    private TextView shopAddress;
+    private LinearLayout barbersLayout , serviceLayout , timeLayout,  feedbackLayout , galleryLayout;
+    private TextView shopName , shopAddress;
     private ImageView barbershopImage;
     int SELECT_IMAGE = 1;
     private SharedPreferences preferences;
@@ -76,6 +71,7 @@ public class SalonFragment extends Fragment {
 
         String address[] = preferences.getString("address" , "").split("/"); //address with the coordinates
         shopAddress.setText(address[0]);  // set the address only without the coordinates
+        Log.d("debug", "shop address = " + address[0]);
 
         loadBarbershopImage(preferences.getString("image", ""));
 
@@ -149,6 +145,7 @@ public class SalonFragment extends Fragment {
                 byte[] imageBytes = stream.toByteArray();
                 encodedImg = Base64.encodeToString(imageBytes,Base64.DEFAULT);
 
+                preferences.edit().putString("image" , encodedImg).apply(); //save image locally
                 saveImageToDB();
 
             } catch (FileNotFoundException e) {
@@ -176,7 +173,7 @@ public class SalonFragment extends Fragment {
                 data[0] = preferences.getString("id","");
                 data[1] = encodedImg;
 
-                PutData putData = new PutData("http://192.168.100.6/barbershop-php/saveShopImage.php", "POST", field, data);
+                PutData putData = new PutData("http://192.168.100.6/barbershop-php/images/saveShopImage.php", "POST", field, data);
                 if (putData.startPut()) {
                     if (putData.onComplete()) {
                         String result = putData.getResult();
@@ -193,8 +190,6 @@ public class SalonFragment extends Fragment {
        byte[] imageAsBytes = Base64.decode(b64.getBytes(), Base64.DEFAULT);
        Bitmap bitmap = BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length);
        barbershopImage.setImageBitmap(bitmap);
-
-       Log.d("debug", "attachBarbershopImage: " + b64);
    }
 
 

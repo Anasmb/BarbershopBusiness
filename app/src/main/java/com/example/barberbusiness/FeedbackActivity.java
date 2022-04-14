@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -91,6 +92,7 @@ public class FeedbackActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) { // this method will execute if there is error
                 Log.d("php", "onErrorResponse: " + error.getMessage());
+                Toast.makeText(getApplicationContext(),"Couldn't connect to server!", Toast.LENGTH_SHORT).show();
             }
         });
 

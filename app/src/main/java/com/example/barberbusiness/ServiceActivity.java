@@ -43,8 +43,7 @@ import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 public class ServiceActivity extends AppCompatActivity {
 
     private String SQL_URL = "http://192.168.100.6/barbershop-php/service/getService.php";
-    private ImageView addButton;
-    private ImageView backButton;
+    private ImageView addButton, backButton;
     private RecyclerView recyclerView;
     private ServiceAdapter adapter;
     private List<ServiceItem> serviceItemList;
@@ -76,7 +75,6 @@ public class ServiceActivity extends AppCompatActivity {
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback); //handle swiping the item in recycle View
         itemTouchHelper.attachToRecyclerView(recyclerView);
     }
-
 
     View.OnClickListener addButtonClick = new View.OnClickListener() {
         @Override
@@ -149,7 +147,6 @@ public class ServiceActivity extends AppCompatActivity {
                 deleteServiceFromDB(serviceItemList.get(position).getServiceID());
                 serviceItemList.remove(position);
                 adapter.notifyItemRemoved(position);
-
             }
         }
 
@@ -162,7 +159,6 @@ public class ServiceActivity extends AppCompatActivity {
                     .decorate();
             super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
         }
-
     };;
 
     private void deleteServiceFromDB(int id){
@@ -170,10 +166,9 @@ public class ServiceActivity extends AppCompatActivity {
         handler.post(new Runnable() {
             @Override
             public void run() {
-
                 String[] field = new String[1];
                 field[0] = "serviceID";
-                //Creating array for data
+
                 String[] data = new String[1];
                 data[0] = String.valueOf(id);
                 PutData putData = new PutData("http://192.168.100.6/barbershop-php/service/deleteService.php", "POST", field, data);
@@ -191,6 +186,4 @@ public class ServiceActivity extends AppCompatActivity {
             }
         });
     }
-
-
 }

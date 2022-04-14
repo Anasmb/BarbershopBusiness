@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MyAccountActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/background_light_blue">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -61,6 +62,16 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <TextView
+            android:id="@+id/nameWarning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Name should not be empty"
+            android:textSize="10dp"
+            android:textColor="#A50000"
+            android:visibility="gone"/>
+
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
@@ -79,6 +90,18 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <TextView
+            android:id="@+id/emailWarning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Enter valid email"
+            android:textSize="10dp"
+            android:textColor="#A50000"
+            android:visibility="gone"/>
+
+
+
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
@@ -96,6 +119,16 @@
                 android:maxLength="10"/>
 
         </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/mobileNumberWarning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Enter valid mobile number"
+            android:textSize="10dp"
+            android:textColor="#A50000"
+            android:visibility="gone"/>
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -132,6 +165,16 @@
                 android:maxLength="10"/>
 
         </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/passwordWarning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Should be at least 8 characteres"
+            android:textSize="10dp"
+            android:textColor="#A50000"
+            android:visibility="gone"/>
 
 
         <com.google.android.material.button.MaterialButton

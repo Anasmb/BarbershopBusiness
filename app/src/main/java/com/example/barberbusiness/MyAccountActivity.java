@@ -6,16 +6,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 public class MyAccountActivity extends AppCompatActivity {
@@ -23,8 +29,10 @@ public class MyAccountActivity extends AppCompatActivity {
     private ImageView backBtn;
     private MaterialButton saveButton;
     private TextInputEditText shopName , email, phoneNumber ,password, address;
-    private String latitude, longitude, barberShopAddress;
-    SharedPreferences preferences;
+    private String latitude, longitude;
+    private SharedPreferences preferences;
+    private boolean isNameValid, isPhoneNumberValid , isEmailValid, isPasswordValid = false;
+    private TextView phoneNumberWarning, emailWarning, passwordWarning, nameWarning;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +46,20 @@ public class MyAccountActivity extends AppCompatActivity {
         saveButton.setOnClickListener(saveButtonListener);
 
         shopName = findViewById(R.id.myAccountShopNameEditText);
+        shopName.addTextChangedListener(nameInputCheck);
         email = findViewById(R.id.myAccountEmailEditText);
+        email.addTextChangedListener(emailInputCheck);
         phoneNumber = findViewById(R.id.myAccountNumberEditText);
+        phoneNumber.addTextChangedListener(phoneNumberInputCheck);
         password = findViewById(R.id.myAccountPasswordEditText);
+        password.addTextChangedListener(passwordInputCheck);
         address = findViewById(R.id.myAccountAddressEditText);
         address.setOnClickListener(addressClickListener);
+
+        phoneNumberWarning = findViewById(R.id.mobileNumberWarning);
+        emailWarning = findViewById(R.id.emailWarning);
+        passwordWarning = findViewById(R.id.passwordWarning);
+        nameWarning = findViewById(R.id.nameWarning);
 
         loadAccountInformation();
 
@@ -71,10 +88,10 @@ public class MyAccountActivity extends AppCompatActivity {
             if(data != null){
                 String result = data.getStringExtra("address");
                 String coordinates[] = result.split("/");
-                address.setText(coordinates[0]);
                 latitude = coordinates[1];
                 longitude = coordinates[2];
-                barberShopAddress = coordinates[0] + "/" + latitude + "/" + longitude;
+                String barberShopAddress = coordinates[0] + "/" + latitude + "/" + longitude;
+                address.setText(barberShopAddress);
                 Log.d("debug", "onActivityResult: latitude = " + latitude + "  longitude = " + longitude);
             }
         }
@@ -84,7 +101,7 @@ public class MyAccountActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
 
-            if (shopName.length() > 0 && email.length() > 0 && phoneNumber.length() > 9 && password.length() > 7) {
+            if (isNameValid && isEmailValid && isPhoneNumberValid && isPasswordValid) {
 
                 saveButton.setClickable(false);
                 Handler handler = new Handler(Looper.getMainLooper());
@@ -103,11 +120,11 @@ public class MyAccountActivity extends AppCompatActivity {
                         String[] data = new String[6];
                         data[0] = String.valueOf(shopName.getText());
                         data[1] = String.valueOf(email.getText());
-                        data[2] = barberShopAddress;
+                        data[2] = String.valueOf(address.getText());
                         data[3] = String.valueOf(phoneNumber.getText());
                         data[4] = String.valueOf(password.getText());
-                        data[5] = preferences.getString("id", "");
-                        PutData putData = new PutData("http://192.168.100.6/barbershop-php/updateBarbershopInfo.php", "POST", field, data);
+                        data[5] = String.valueOf(preferences.getString("id", ""));
+                        PutData putData = new PutData("http://192.168.100.6/barbershop-php/barbershop/updateBarbershopInfo.php", "POST", field, data);
                         if (putData.startPut()) {
                             if (putData.onComplete()) {
                                 String result = putData.getResult();
@@ -145,9 +162,107 @@ public class MyAccountActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("shopName",shopName.getText().toString());
         editor.putString("email",email.getText().toString());
-        editor.putString("address" , barberShopAddress);
+        editor.putString("address" , address.getText().toString());
         editor.putString("phoneNumber",phoneNumber.getText().toString());
         editor.putString("password",password.getText().toString());
         editor.apply();
     }
+
+    private TextWatcher nameInputCheck = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+            if (editable.toString().length() < 1){
+                nameWarning.setVisibility(View.VISIBLE);
+                isNameValid = false;
+            }
+            else{
+                isNameValid = true;
+                nameWarning.setVisibility(View.GONE);
+            }
+        }
+    };
+
+    private TextWatcher emailInputCheck = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+            if(!Patterns.EMAIL_ADDRESS.matcher(editable.toString()).matches()){ // check the email format, is it valid or not
+                emailWarning.setVisibility(View.VISIBLE);
+                isEmailValid = false;
+            }
+            else {
+                emailWarning.setVisibility(View.GONE);
+                isEmailValid = true;
+            }
+        }
+    };
+
+    private TextWatcher phoneNumberInputCheck = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+            if (editable.toString().length() != 10){
+                phoneNumberWarning.setVisibility(View.VISIBLE);
+                isPhoneNumberValid = false;
+            }
+            else {
+                phoneNumberWarning.setVisibility(View.GONE);
+                isPhoneNumberValid = true;
+            }
+        }
+    };
+
+    private TextWatcher passwordInputCheck = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+            if (editable.toString().length() < 8){
+                passwordWarning.setVisibility(View.VISIBLE);
+                isPasswordValid = false;
+            }
+            else {
+                passwordWarning.setVisibility(View.GONE);
+                isPasswordValid = true;
+            }
+        }
+    };
+
 }

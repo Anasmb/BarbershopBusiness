@@ -40,10 +40,7 @@ public class TimeActivity extends AppCompatActivity implements View.OnClickListe
             thursdayCheckBox, fridayCheckBox, saturdayCheckBox;
 
     private String openingHours;
-
-    private ImageView backButton;
-    private ImageView doneButton;
-
+    private ImageView backButton , doneButton;
     private SharedPreferences preferences;
     int hour;
 
@@ -133,7 +130,7 @@ public class TimeActivity extends AppCompatActivity implements View.OnClickListe
                     String[] field = new String[2];
                     field[0] = "BarbershopID";
                     field[1] = "Hours";
-                    //Creating array for data
+
                     String[] data = new String[2];
                     data[0] = preferences.getString("id","");
                     data[1] = openingHours;
@@ -144,7 +141,9 @@ public class TimeActivity extends AppCompatActivity implements View.OnClickListe
                             if (result.equals("Add Success")) {
                                 Log.d("php", result);
                                 Toast.makeText(getApplicationContext(), "Hours Added Successfully", Toast.LENGTH_SHORT).show();
-                                preferences.edit().putString("hours", openingHours).apply();
+                                SharedPreferences.Editor editor = preferences.edit();
+                                editor.putString("hours", openingHours);
+                                editor.apply();
                                 finish();
                             } else { // All fields are required
                                 Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
@@ -284,8 +283,10 @@ public class TimeActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void loadHours(){
-        if(openingHours != null) {
-            String hours[] = preferences.getString("hours", "").split(",");
+
+        String[] hours = preferences.getString("hours", "").split(",");
+
+        if(hours.length > 13) {
             sundayFrom.setText(hours[0]);
             sundayTo.setText(hours[1]);
             mondayFrom.setText(hours[2]);

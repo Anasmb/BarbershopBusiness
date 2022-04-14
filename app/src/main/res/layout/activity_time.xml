@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".TimeActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/background_light_blue">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -40,557 +41,586 @@
 
     </RelativeLayout>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="4dp"
+            android:layout_height="match_parent"
             android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sunday"
-                android:textSize="18dp"
-                android:fontFamily="@font/roboto_bold"
-                android:textColor="@color/black"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/sundayFromLayout"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    app:startIconTint="#9C9C9C"
-                    android:layout_width="101dp"
-                    android:layout_height="57dp"
-                    android:layout_marginHorizontal="2dp"
-                    android:hint="From"
-                    android:textColorHint="#9C9C9C">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/sundayFromEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:singleLine="true"
-                        android:focusable="false" />
-
-                </com.google.android.material.textfield.TextInputLayout>
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="10dp"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="2dp"
-                    android:text="To"
-                    android:textSize="16dp"
+                    android:text="Sunday"
+                    android:textSize="18dp"
                     android:fontFamily="@font/roboto_bold"
                     android:textColor="@color/black"/>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    app:startIconTint="#9C9C9C"
-                    android:layout_width="101dp"
-                    android:layout_height="57dp"
-                    android:layout_marginHorizontal="2dp"
-                    android:hint="To"
-                    android:textColorHint="#9C9C9C">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:orientation="horizontal">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/sundayToEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:singleLine="true"
-                        android:focusable="false"/>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/sundayFromLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        app:startIconTint="#9C9C9C"
+                        android:layout_width="101dp"
+                        android:layout_height="57dp"
+                        android:layout_marginHorizontal="2dp"
+                        android:hint="From"
+                        android:textColorHint="#9C9C9C">
 
-                </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/sundayFromEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:singleLine="true"
+                            android:focusable="false" />
 
-                <com.google.android.material.checkbox.MaterialCheckBox
-                    android:id="@+id/sundayCheckBox"
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="2dp"
+                        android:text="To"
+                        android:textSize="16dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:textColor="@color/black"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        app:startIconTint="#9C9C9C"
+                        android:layout_width="101dp"
+                        android:layout_height="57dp"
+                        android:layout_marginHorizontal="2dp"
+                        android:hint="To"
+                        android:textColorHint="#9C9C9C">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/sundayToEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:singleLine="true"
+                            android:focusable="false"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/sundayCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:text="Close"
+                        android:fontFamily="@font/roboto_bold" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="10dp"
+                android:orientation="vertical">
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:text="Close"
-                    android:fontFamily="@font/roboto_bold" />
+                    android:text="Monday"
+                    android:textSize="18dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:textColor="@color/black"/>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        app:startIconTint="#9C9C9C"
+                        android:layout_width="101dp"
+                        android:layout_height="57dp"
+                        android:layout_marginHorizontal="2dp"
+                        android:hint="From"
+                        android:textColorHint="#9C9C9C">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/mondayFromEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:singleLine="true"
+                            android:focusable="false"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="2dp"
+                        android:text="To"
+                        android:textSize="16dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:textColor="@color/black"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        app:startIconTint="#9C9C9C"
+                        android:layout_width="101dp"
+                        android:layout_height="57dp"
+                        android:layout_marginHorizontal="2dp"
+                        android:hint="To"
+                        android:textColorHint="#9C9C9C">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/mondayToEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:focusable="false"
+                            android:singleLine="true"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/mondayCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:text="Close"
+                        android:fontFamily="@font/roboto_bold" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tuesday"
+                    android:textSize="18dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:textColor="@color/black"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        app:startIconTint="#9C9C9C"
+                        android:layout_width="101dp"
+                        android:layout_height="57dp"
+                        android:layout_marginHorizontal="2dp"
+                        android:hint="From"
+                        android:textColorHint="#9C9C9C">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tuesdayFromEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:focusable="false"
+                            android:singleLine="true"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="2dp"
+                        android:text="To"
+                        android:textSize="16dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:textColor="@color/black"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        app:startIconTint="#9C9C9C"
+                        android:layout_width="101dp"
+                        android:layout_height="57dp"
+                        android:layout_marginHorizontal="2dp"
+                        android:hint="To"
+                        android:textColorHint="#9C9C9C">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tuesdayToEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:focusable="false"
+                            android:singleLine="true"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/tuesdayCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:text="Close"
+                        android:fontFamily="@font/roboto_bold" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Wednesday"
+                    android:textSize="18dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:textColor="@color/black"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        app:startIconTint="#9C9C9C"
+                        android:layout_width="101dp"
+                        android:layout_height="57dp"
+                        android:layout_marginHorizontal="2dp"
+                        android:hint="From"
+                        android:textColorHint="#9C9C9C">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/wednesdayFromEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:focusable="false"
+                            android:singleLine="true"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="2dp"
+                        android:text="To"
+                        android:textSize="16dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:textColor="@color/black"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        app:startIconTint="#9C9C9C"
+                        android:layout_width="101dp"
+                        android:layout_height="57dp"
+                        android:layout_marginHorizontal="2dp"
+                        android:hint="To"
+                        android:textColorHint="#9C9C9C">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/wednesdayToEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:focusable="false"
+                            android:singleLine="true"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/wednesdayCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:text="Close"
+                        android:fontFamily="@font/roboto_bold" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Thursday"
+                    android:textSize="18dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:textColor="@color/black"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        app:startIconTint="#9C9C9C"
+                        android:layout_width="101dp"
+                        android:layout_height="57dp"
+                        android:layout_marginHorizontal="2dp"
+                        android:hint="From"
+                        android:textColorHint="#9C9C9C">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/thursdayFromEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:focusable="false"
+                            android:singleLine="true"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="2dp"
+                        android:text="To"
+                        android:textSize="16dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:textColor="@color/black"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        app:startIconTint="#9C9C9C"
+                        android:layout_width="101dp"
+                        android:layout_height="57dp"
+                        android:layout_marginHorizontal="2dp"
+                        android:hint="To"
+                        android:textColorHint="#9C9C9C">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/thursdayToEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:focusable="false"
+                            android:singleLine="true"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/thursdayCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:text="Close"
+                        android:fontFamily="@font/roboto_bold" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Friday"
+                    android:textSize="18dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:textColor="@color/black"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        app:startIconTint="#9C9C9C"
+                        android:layout_width="101dp"
+                        android:layout_height="57dp"
+                        android:layout_marginHorizontal="2dp"
+                        android:hint="From"
+                        android:textColorHint="#9C9C9C">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/fridayFromEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:focusable="false"
+                            android:singleLine="true"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="2dp"
+                        android:text="To"
+                        android:textSize="16dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:textColor="@color/black"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        app:startIconTint="#9C9C9C"
+                        android:layout_width="101dp"
+                        android:layout_height="57dp"
+                        android:layout_marginHorizontal="2dp"
+                        android:hint="To"
+                        android:textColorHint="#9C9C9C">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/fridayToEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:focusable="false"
+                            android:singleLine="true"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/fridayCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:text="Close"
+                        android:fontFamily="@font/roboto_bold" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Saturday"
+                    android:textSize="18dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:textColor="@color/black"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        app:startIconTint="#9C9C9C"
+                        android:layout_width="101dp"
+                        android:layout_height="57dp"
+                        android:layout_marginHorizontal="2dp"
+                        android:hint="From"
+                        android:textColorHint="#9C9C9C">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/saturdayFromEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:focusable="false"
+                            android:singleLine="true"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="2dp"
+                        android:text="To"
+                        android:textSize="16dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:textColor="@color/black"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        app:startIconTint="#9C9C9C"
+                        android:layout_width="101dp"
+                        android:layout_height="57dp"
+                        android:layout_marginHorizontal="2dp"
+                        android:hint="To"
+                        android:textColorHint="#9C9C9C">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/saturdayToEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:focusable="false"
+                            android:singleLine="true"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/saturdayCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:text="Close"
+                        android:fontFamily="@font/roboto_bold" />
+
+
+                </LinearLayout>
 
             </LinearLayout>
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="4dp"
-            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Monday"
-                android:textSize="18dp"
-                android:fontFamily="@font/roboto_bold"
-                android:textColor="@color/black"/>
+    </ScrollView>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    app:startIconTint="#9C9C9C"
-                    android:layout_width="101dp"
-                    android:layout_height="57dp"
-                    android:layout_marginHorizontal="2dp"
-                    android:hint="From"
-                    android:textColorHint="#9C9C9C">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/mondayFromEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:singleLine="true"
-                        android:focusable="false"/>
 
-                </com.google.android.material.textfield.TextInputLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="2dp"
-                    android:text="To"
-                    android:textSize="16dp"
-                    android:fontFamily="@font/roboto_bold"
-                    android:textColor="@color/black"/>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    app:startIconTint="#9C9C9C"
-                    android:layout_width="101dp"
-                    android:layout_height="57dp"
-                    android:layout_marginHorizontal="2dp"
-                    android:hint="To"
-                    android:textColorHint="#9C9C9C">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/mondayToEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:focusable="false"
-                        android:singleLine="true"/>
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.checkbox.MaterialCheckBox
-                    android:id="@+id/mondayCheckBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:text="Close"
-                    android:fontFamily="@font/roboto_bold" />
-
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="4dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tuesday"
-                android:textSize="18dp"
-                android:fontFamily="@font/roboto_bold"
-                android:textColor="@color/black"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    app:startIconTint="#9C9C9C"
-                    android:layout_width="101dp"
-                    android:layout_height="57dp"
-                    android:layout_marginHorizontal="2dp"
-                    android:hint="From"
-                    android:textColorHint="#9C9C9C">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/tuesdayFromEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:focusable="false"
-                        android:singleLine="true"/>
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="2dp"
-                    android:text="To"
-                    android:textSize="16dp"
-                    android:fontFamily="@font/roboto_bold"
-                    android:textColor="@color/black"/>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    app:startIconTint="#9C9C9C"
-                    android:layout_width="101dp"
-                    android:layout_height="57dp"
-                    android:layout_marginHorizontal="2dp"
-                    android:hint="To"
-                    android:textColorHint="#9C9C9C">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/tuesdayToEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:focusable="false"
-                        android:singleLine="true"/>
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.checkbox.MaterialCheckBox
-                    android:id="@+id/tuesdayCheckBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:text="Close"
-                    android:fontFamily="@font/roboto_bold" />
-
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="4dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Wednesday"
-                android:textSize="18dp"
-                android:fontFamily="@font/roboto_bold"
-                android:textColor="@color/black"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    app:startIconTint="#9C9C9C"
-                    android:layout_width="101dp"
-                    android:layout_height="57dp"
-                    android:layout_marginHorizontal="2dp"
-                    android:hint="From"
-                    android:textColorHint="#9C9C9C">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/wednesdayFromEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:focusable="false"
-                        android:singleLine="true"/>
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="2dp"
-                    android:text="To"
-                    android:textSize="16dp"
-                    android:fontFamily="@font/roboto_bold"
-                    android:textColor="@color/black"/>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    app:startIconTint="#9C9C9C"
-                    android:layout_width="101dp"
-                    android:layout_height="57dp"
-                    android:layout_marginHorizontal="2dp"
-                    android:hint="To"
-                    android:textColorHint="#9C9C9C">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/wednesdayToEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:focusable="false"
-                        android:singleLine="true"/>
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.checkbox.MaterialCheckBox
-                    android:id="@+id/wednesdayCheckBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:text="Close"
-                    android:fontFamily="@font/roboto_bold" />
-
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="4dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Thursday"
-                android:textSize="18dp"
-                android:fontFamily="@font/roboto_bold"
-                android:textColor="@color/black"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    app:startIconTint="#9C9C9C"
-                    android:layout_width="101dp"
-                    android:layout_height="57dp"
-                    android:layout_marginHorizontal="2dp"
-                    android:hint="From"
-                    android:textColorHint="#9C9C9C">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/thursdayFromEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:focusable="false"
-                        android:singleLine="true"/>
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="2dp"
-                    android:text="To"
-                    android:textSize="16dp"
-                    android:fontFamily="@font/roboto_bold"
-                    android:textColor="@color/black"/>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    app:startIconTint="#9C9C9C"
-                    android:layout_width="101dp"
-                    android:layout_height="57dp"
-                    android:layout_marginHorizontal="2dp"
-                    android:hint="To"
-                    android:textColorHint="#9C9C9C">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/thursdayToEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:focusable="false"
-                        android:singleLine="true"/>
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.checkbox.MaterialCheckBox
-                    android:id="@+id/thursdayCheckBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:text="Close"
-                    android:fontFamily="@font/roboto_bold" />
-
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="4dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Friday"
-                android:textSize="18dp"
-                android:fontFamily="@font/roboto_bold"
-                android:textColor="@color/black"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    app:startIconTint="#9C9C9C"
-                    android:layout_width="101dp"
-                    android:layout_height="57dp"
-                    android:layout_marginHorizontal="2dp"
-                    android:hint="From"
-                    android:textColorHint="#9C9C9C">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/fridayFromEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:focusable="false"
-                        android:singleLine="true"/>
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="2dp"
-                    android:text="To"
-                    android:textSize="16dp"
-                    android:fontFamily="@font/roboto_bold"
-                    android:textColor="@color/black"/>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    app:startIconTint="#9C9C9C"
-                    android:layout_width="101dp"
-                    android:layout_height="57dp"
-                    android:layout_marginHorizontal="2dp"
-                    android:hint="To"
-                    android:textColorHint="#9C9C9C">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/fridayToEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:focusable="false"
-                        android:singleLine="true"/>
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.checkbox.MaterialCheckBox
-                    android:id="@+id/fridayCheckBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:text="Close"
-                    android:fontFamily="@font/roboto_bold" />
-
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="4dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Saturday"
-                android:textSize="18dp"
-                android:fontFamily="@font/roboto_bold"
-                android:textColor="@color/black"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    app:startIconTint="#9C9C9C"
-                    android:layout_width="101dp"
-                    android:layout_height="57dp"
-                    android:layout_marginHorizontal="2dp"
-                    android:hint="From"
-                    android:textColorHint="#9C9C9C">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/saturdayFromEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:focusable="false"
-                        android:singleLine="true"/>
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="2dp"
-                    android:text="To"
-                    android:textSize="16dp"
-                    android:fontFamily="@font/roboto_bold"
-                    android:textColor="@color/black"/>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    app:startIconTint="#9C9C9C"
-                    android:layout_width="101dp"
-                    android:layout_height="57dp"
-                    android:layout_marginHorizontal="2dp"
-                    android:hint="To"
-                    android:textColorHint="#9C9C9C">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/saturdayToEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:focusable="false"
-                        android:singleLine="true"/>
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.checkbox.MaterialCheckBox
-                    android:id="@+id/saturdayCheckBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:text="Close"
-                    android:fontFamily="@font/roboto_bold" />
-
-
-            </LinearLayout>
-
-        </LinearLayout>
 
 
 

@@ -37,7 +37,7 @@ public class BarbershopLoginActivity extends AppCompatActivity {
         public void onClick(View view) {
 
             if(phoneNumber.getText().length() > 0 && password.getText().length() > 0) {
-                //Start ProgressBar first (Set visibility VISIBLE)
+
                 loginButton.setClickable(false);
                 Handler handler = new Handler(Looper.getMainLooper());
                 handler.post(new Runnable() {
@@ -50,26 +50,29 @@ public class BarbershopLoginActivity extends AppCompatActivity {
                         data[0] = String.valueOf(phoneNumber.getText());
                         data[1] = String.valueOf(password.getText());
                         Log.d("php" , data[0] + " " + data[1]);
-                        PutData putData = new PutData("http://192.168.100.6/barbershop-php/loginBarbershop.php", "POST", field, data);
+                        PutData putData = new PutData("http://192.168.100.6/barbershop-php/barbershop/loginBarbershop.php", "POST", field, data);
                         if (putData.startPut()) {
                             if (putData.onComplete()) {
                                 String result = putData.getResult();
                                 if(result.equals("Login Success")){
-                                    Log.d("php", result);
                                     Intent intent = new Intent(getApplicationContext(), BarbershopMainActivity.class);
                                     intent.putExtra("phonenumber" , phoneNumber.getText().toString()); //send phone number to next activity
                                     startActivity(intent);
                                     finish();
                                     Toast.makeText(getApplicationContext(),"Login Success",Toast.LENGTH_SHORT).show();
                                 }
-                                else {
-                                    Toast.makeText(getApplicationContext(),result,Toast.LENGTH_LONG).show();
-                                    Log.d("php", result);
+                                else if(result.equals("Wrong Information") || result.equals("User not found")){
+                                    Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();
                                     loginButton.setClickable(true);
                                 }
+                                else {
+                                    Toast.makeText(getApplicationContext(),"Couldn't connect to server!",Toast.LENGTH_SHORT).show();
+                                    loginButton.setClickable(true);
+                                }
+                                Log.d("php", result);
                             }
                         }
-                        //End Write and Read data with URL
+
                     }
                 });
             }

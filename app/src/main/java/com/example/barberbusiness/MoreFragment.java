@@ -14,10 +14,7 @@ import androidx.fragment.app.Fragment;
 
 public class MoreFragment extends Fragment {
 
-    private LinearLayout myAccountLayout;
-    private LinearLayout changeLanguageLayout;
-    private LinearLayout customerSupportLayout;
-    private LinearLayout logoutLayout;
+    private LinearLayout myAccountLayout , changeLanguageLayout , customerSupportLayout , logoutLayout;
     private SharedPreferences preferences;
 
 
@@ -28,16 +25,12 @@ public class MoreFragment extends Fragment {
 
         myAccountLayout = view.findViewById(R.id.myAccountLayout);
         myAccountLayout.setOnClickListener(myAccountLayoutListener);
-
         changeLanguageLayout = view.findViewById(R.id.changeLanguageLayout);
         changeLanguageLayout.setOnClickListener(changeLanguageLayoutListener);
-
         customerSupportLayout = view.findViewById(R.id.customerSupportLayout);
         customerSupportLayout.setOnClickListener(customerSupportLayoutListener);
-
         logoutLayout = view.findViewById(R.id.signInLayout);
         logoutLayout.setOnClickListener(logoutLayoutListener);
-
 
         return view;
     }
