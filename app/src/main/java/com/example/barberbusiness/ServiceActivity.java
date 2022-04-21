@@ -127,7 +127,7 @@ public class ServiceActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) { // this method will execute if there is error
-                Toast.makeText(getApplicationContext(),error.getMessage(), Toast.LENGTH_LONG).show();
+                Log.d("debug", "onErrorResponse: " + error.getMessage());
             }
         });
 

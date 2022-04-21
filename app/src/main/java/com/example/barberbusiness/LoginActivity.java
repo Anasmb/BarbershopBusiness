@@ -8,14 +8,13 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
-public class BarbershopLoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private TextInputEditText phoneNumber, password;
     private MaterialButton loginButton;
@@ -55,7 +54,7 @@ public class BarbershopLoginActivity extends AppCompatActivity {
                             if (putData.onComplete()) {
                                 String result = putData.getResult();
                                 if(result.equals("Login Success")){
-                                    Intent intent = new Intent(getApplicationContext(), BarbershopMainActivity.class);
+                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                     intent.putExtra("phonenumber" , phoneNumber.getText().toString()); //send phone number to next activity
                                     startActivity(intent);
                                     finish();

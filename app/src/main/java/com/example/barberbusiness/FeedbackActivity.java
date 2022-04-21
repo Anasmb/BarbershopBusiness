@@ -92,7 +92,6 @@ public class FeedbackActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) { // this method will execute if there is error
                 Log.d("php", "onErrorResponse: " + error.getMessage());
-                Toast.makeText(getApplicationContext(),"Couldn't connect to server!", Toast.LENGTH_SHORT).show();
             }
         });
 

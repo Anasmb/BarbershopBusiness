@@ -102,8 +102,7 @@ public class AppointmentFragment extends Fragment implements  AppointmentAdapter
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) { // this method will execute if there is error
-                Toast.makeText(getActivity(),error.getMessage(), Toast.LENGTH_LONG).show();
-                Toast.makeText(getActivity(),"Couldn't connect to server!", Toast.LENGTH_SHORT).show();
+                Log.d("debug", "onErrorResponse: " + error.getMessage());
             }
 
         });

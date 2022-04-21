@@ -64,7 +64,7 @@ public class MoreFragment extends Fragment {
     private View.OnClickListener logoutLayoutListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent(getActivity(), BarbershopLoginActivity.class);
+            Intent intent = new Intent(getActivity(), LoginActivity.class);
             SharedPreferences.Editor editor = preferences.edit();
             editor.clear();
             editor.commit();

@@ -32,7 +32,7 @@ import org.json.JSONObject;
 
 import java.nio.BufferUnderflowException;
 
-public class BarbershopMainActivity extends AppCompatActivity { //TODO FIX WHEN DATABASE NOT AVAILABLE OR WIFI IS OFF
+public class MainActivity extends AppCompatActivity { //TODO FIX WHEN DATABASE NOT AVAILABLE OR WIFI IS OFF
 
     private String SQL_URL = "http://192.168.100.6/barbershop-php/barbershop/getBarbershopInfo.php";
     private SharedPreferences preferences;
@@ -105,7 +105,6 @@ public class BarbershopMainActivity extends AppCompatActivity { //TODO FIX WHEN 
             @Override
             public void onErrorResponse(VolleyError error) { // this method will execute if there is error
                 Log.d("php", "onErrorResponse: " + error.getMessage());
-                Toast.makeText(getApplicationContext(),"Couldn't connect to server!", Toast.LENGTH_SHORT).show();
             }
         });
 
