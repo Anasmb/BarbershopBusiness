@@ -71,7 +71,7 @@ public class AppointmentFragment extends Fragment implements  AppointmentAdapter
     }
 
     private void loadAppointments(){
-
+        Log.d("debug", "loading appointments for barbershop with ID: " + preferences.getString("id",""));
         StringRequest stringRequest = new StringRequest(Request.Method.POST, SQL_URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -90,6 +90,7 @@ public class AppointmentFragment extends Fragment implements  AppointmentAdapter
                         String customerAddress = appointmentObject.getString("customerAddress");
                         AppointmentItem appointmentItem = new AppointmentItem(appointmentID,customerName,barberName,totalPrice,dateTime,serviceAt,customerAddress,services,status);
                         appointmentItemList.add(appointmentItem);
+
                     }
 
                     adapter = new AppointmentAdapter(getActivity(), appointmentItemList, AppointmentFragment.this::onItemClick);
@@ -98,6 +99,7 @@ public class AppointmentFragment extends Fragment implements  AppointmentAdapter
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+                Log.d("php", response);
             }
         }, new Response.ErrorListener() {
             @Override

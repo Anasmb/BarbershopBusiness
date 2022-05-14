@@ -29,14 +29,7 @@ public class AddBarberActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_barber);
         preferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
-
-        barberName = findViewById(R.id.barberNameEditText);
-        barberExperience = findViewById(R.id.barberExperienceEditText);
-        barberNationality = findViewById(R.id.barberNationalityEditText);
-        backButton = findViewById(R.id.addBarbersBackButton);
-        backButton.setOnClickListener(backButtonClick);
-        saveButton = findViewById(R.id.addBarberSaveButton);
-        saveButton.setOnClickListener(saveButtonListener);
+        viewsInitialization();
     }
 
     private View.OnClickListener saveButtonListener = new View.OnClickListener() {
@@ -89,4 +82,14 @@ public class AddBarberActivity extends AppCompatActivity {
             finish();
         }
     };
+
+    private void viewsInitialization(){
+        barberName = findViewById(R.id.barberNameEditText);
+        barberExperience = findViewById(R.id.barberExperienceEditText);
+        barberNationality = findViewById(R.id.barberNationalityEditText);
+        backButton = findViewById(R.id.addBarbersBackButton);
+        backButton.setOnClickListener(backButtonClick);
+        saveButton = findViewById(R.id.addBarberSaveButton);
+        saveButton.setOnClickListener(saveButtonListener);
+    }
 }

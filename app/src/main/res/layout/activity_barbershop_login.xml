@@ -8,24 +8,6 @@
     tools:context=".LoginActivity"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp">
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="Log In"
-            android:textSize="24sp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/roboto_regular"
-            android:textStyle="bold"
-            android:textAlignment="center"/>
-    </RelativeLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,14 +16,29 @@
         android:paddingVertical="24dp"
         android:background="@color/white">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sign In to continue"
+            android:layout_marginBottom="24dp"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/roboto_regular"
+            android:textStyle="bold"
+            android:textAlignment="center"/>
+
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="58dp"
+            android:layout_height="64dp"
             android:layout_marginVertical="10dp"
             android:hint="Phone Number"
-            android:textColorHint="#9C9C9C">
+            android:textColorHint="#9C9C9C"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusBottomEnd="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/loginPhoneNumberEditText"
@@ -56,10 +53,14 @@
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="58dp"
+            android:layout_height="64dp"
             android:layout_marginVertical="10dp"
             android:hint="Password"
-            android:textColorHint="#9C9C9C">
+            android:textColorHint="#9C9C9C"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusBottomEnd="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/loginPasswordEditText"
@@ -75,10 +76,13 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/loginButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginHorizontal="64dp"
             android:layout_marginVertical="24dp"
-            android:text="LOG in"/>
+            android:text="Sign in"
+            android:textSize="16sp"
+            android:textAllCaps="false"
+            app:cornerRadius="20dp"/>
 
 
     </LinearLayout>

@@ -23,20 +23,13 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_barbershop_login);
-
-        phoneNumber = findViewById(R.id.loginPhoneNumberEditText);
-        password = findViewById(R.id.loginPasswordEditText);
-
-        loginButton = findViewById(R.id.loginButton);
-        loginButton.setOnClickListener(loginListener);
+        viewsInitialization();
     }
 
     View.OnClickListener loginListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-
             if(phoneNumber.getText().length() > 0 && password.getText().length() > 0) {
-
                 loginButton.setClickable(false);
                 Handler handler = new Handler(Looper.getMainLooper());
                 handler.post(new Runnable() {
@@ -78,5 +71,12 @@ public class LoginActivity extends AppCompatActivity {
 
         }
     };
+
+    private void viewsInitialization(){
+        phoneNumber = findViewById(R.id.loginPhoneNumberEditText);
+        password = findViewById(R.id.loginPasswordEditText);
+        loginButton = findViewById(R.id.loginButton);
+        loginButton.setOnClickListener(loginListener);
+    }
 
 }

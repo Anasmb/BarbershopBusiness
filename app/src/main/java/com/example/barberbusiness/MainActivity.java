@@ -32,7 +32,7 @@ import org.json.JSONObject;
 
 import java.nio.BufferUnderflowException;
 
-public class MainActivity extends AppCompatActivity { //TODO FIX WHEN DATABASE NOT AVAILABLE OR WIFI IS OFF
+public class MainActivity extends AppCompatActivity {
 
     private String SQL_URL = "http://192.168.100.6/barbershop-php/barbershop/getBarbershopInfo.php";
     private SharedPreferences preferences;
