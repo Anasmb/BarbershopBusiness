@@ -29,7 +29,7 @@ import java.util.List;
 
 public class FeedbackActivity extends AppCompatActivity {
 
-    private String SQL_URL = "http://192.168.100.6/barbershop-php/feedback/getFeedback.php";
+    private String SQL_URL = "http://188.54.243.108/barbershop-php/feedback/getFeedback.php";
     private ImageView backBtn;
     private RecyclerView recyclerView;
     private FeedbackAdapter adapter;

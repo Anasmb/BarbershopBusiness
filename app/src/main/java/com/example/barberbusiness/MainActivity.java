@@ -34,7 +34,7 @@ import java.nio.BufferUnderflowException;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String SQL_URL = "http://192.168.100.6/barbershop-php/barbershop/getBarbershopInfo.php";
+    private String SQL_URL = "http://188.54.243.108/barbershop-php/barbershop/getBarbershopInfo.php";
     private SharedPreferences preferences;
 
     @Override

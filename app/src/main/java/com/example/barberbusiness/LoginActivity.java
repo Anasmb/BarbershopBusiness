@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
                         data[0] = String.valueOf(phoneNumber.getText());
                         data[1] = String.valueOf(password.getText());
                         Log.d("php" , data[0] + " " + data[1]);
-                        PutData putData = new PutData("http://192.168.100.6/barbershop-php/barbershop/loginBarbershop.php", "POST", field, data);
+                        PutData putData = new PutData("http://188.54.243.108/barbershop-php/barbershop/loginBarbershop.php", "POST", field, data);
                         if (putData.startPut()) {
                             if (putData.onComplete()) {
                                 String result = putData.getResult();

@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -43,7 +44,7 @@ import java.util.List;
 
 public class GalleryActivity extends AppCompatActivity {
 
-    private String SQL_URL = "http://192.168.100.6/barbershop-php/images/getImages.php";
+    private String SQL_URL = "http://188.54.243.108/barbershop-php/images/getImages.php";
     private GridView gridView;
     private GalleryAdapter adapter;
     private List<GalleryItem> galleryItemList;
@@ -52,6 +53,7 @@ public class GalleryActivity extends AppCompatActivity {
     private String shopID;
     private int SELECT_IMAGE = 1;
     private Bitmap bitmap;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +72,7 @@ public class GalleryActivity extends AppCompatActivity {
         addImageBtn.setOnClickListener(addImageListener);
         gridView = findViewById(R.id.galleryGridView);
         gridView.setOnItemLongClickListener(gridItemListener);
+        progressBar = findViewById(R.id.galleryProgress);
 
         loadImages();
     }
@@ -144,7 +147,7 @@ public class GalleryActivity extends AppCompatActivity {
                 data[0] = preferences.getString("id","");
                 data[1] = encodedImg;
 
-                PutData putData = new PutData("http://192.168.100.6/barbershop-php/images/addImage.php", "POST", field, data);
+                PutData putData = new PutData("http://188.54.243.108/barbershop-php/images/addImage.php", "POST", field, data);
                 if (putData.startPut()) {
                     if (putData.onComplete()) {
                         String result = putData.getResult();
@@ -159,6 +162,7 @@ public class GalleryActivity extends AppCompatActivity {
     }
 
     private void loadImages(){
+        progressBar.setVisibility(View.VISIBLE);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, SQL_URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -177,7 +181,7 @@ public class GalleryActivity extends AppCompatActivity {
                     }
                     adapter = new GalleryAdapter(getApplicationContext(),galleryItemList);
                     gridView.setAdapter(adapter);
-
+                    progressBar.setVisibility(View.GONE);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -206,7 +210,7 @@ public class GalleryActivity extends AppCompatActivity {
                 data[0] = preferences.getString("id","");
                 data[1] = String.valueOf(imageID);
 
-                PutData putData = new PutData("http://192.168.100.6/barbershop-php/images/deleteImage.php", "POST", field, data);
+                PutData putData = new PutData("http://188.54.243.108/barbershop-php/images/deleteImage.php", "POST", field, data);
                 if (putData.startPut()) {
                     if (putData.onComplete()) {
                         String result = putData.getResult();

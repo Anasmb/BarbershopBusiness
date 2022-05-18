@@ -12,14 +12,14 @@
         android:layout_height="match_parent"
         android:src="@drawable/splash_background"
         android:scaleType="fitXY"
-        android:alpha="0.1"/>
+        android:alpha="0.05"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="500dp"
-        android:text="Gentlemen"
+        android:layout_marginTop="530dp"
+        android:text="Barbershop"
         android:textColor="@color/black"
         android:textSize="52dp"
         android:textStyle="normal"
@@ -27,11 +27,11 @@
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/splashLogo"
-        android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:layout_centerInParent="true"
         app:lottie_autoPlay="true"
-        app:lottie_rawRes="@raw/barbershop_animation" />
+        app:lottie_rawRes="@raw/scissors_anim" />
 
 
 </RelativeLayout>

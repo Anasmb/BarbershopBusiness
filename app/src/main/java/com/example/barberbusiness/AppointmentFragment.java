@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -37,12 +38,13 @@ import java.util.List;
 
 public class AppointmentFragment extends Fragment implements  AppointmentAdapter.OnItemListener {
 
-    private String SQL_URL = "http://192.168.100.6/barbershop-php/appointment/getAppointment.php";
+    private String SQL_URL = "http://188.54.243.108/barbershop-php/appointment/getAppointment.php";
     private RecyclerView recyclerView;
     private AppointmentAdapter adapter;
     private List<AppointmentItem> appointmentItemList;
     private SharedPreferences preferences;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private ProgressBar progressBar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -59,6 +61,7 @@ public class AppointmentFragment extends Fragment implements  AppointmentAdapter
 
         swipeRefreshLayout = view.findViewById(R.id.appointmentRefresh);
         swipeRefreshLayout.setOnRefreshListener(refreshListener);
+        progressBar = view.findViewById(R.id.appointmentProgress);
 
         appointmentItemList = new ArrayList<>();
         recyclerView = view.findViewById(R.id.appointments_recyclerView);
@@ -71,6 +74,7 @@ public class AppointmentFragment extends Fragment implements  AppointmentAdapter
     }
 
     private void loadAppointments(){
+        progressBar.setVisibility(View.VISIBLE);
         Log.d("debug", "loading appointments for barbershop with ID: " + preferences.getString("id",""));
         StringRequest stringRequest = new StringRequest(Request.Method.POST, SQL_URL, new Response.Listener<String>() {
             @Override
@@ -92,10 +96,9 @@ public class AppointmentFragment extends Fragment implements  AppointmentAdapter
                         appointmentItemList.add(appointmentItem);
 
                     }
-
                     adapter = new AppointmentAdapter(getActivity(), appointmentItemList, AppointmentFragment.this::onItemClick);
                     recyclerView.setAdapter(adapter);
-
+                    progressBar.setVisibility(View.GONE);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

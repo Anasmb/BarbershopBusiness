@@ -5,6 +5,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/background_light_blue">
 
+    <ProgressBar
+        android:id="@+id/appointmentProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
+
     <LinearLayout
         android:id="@+id/appointment_topNav"
         android:layout_width="match_parent"

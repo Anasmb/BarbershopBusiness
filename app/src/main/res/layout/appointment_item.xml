@@ -193,7 +193,7 @@
                 android:id="@+id/appointmentDeclineText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Declin"
+                android:text="Decline"
                 android:textColor="#A50000"
                 android:fontFamily="@font/roboto_bold"
                 android:textSize="18dp"

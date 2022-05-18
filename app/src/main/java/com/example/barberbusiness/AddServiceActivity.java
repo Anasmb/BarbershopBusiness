@@ -61,7 +61,7 @@ public class AddServiceActivity extends AppCompatActivity {
                         data[0] = String.valueOf(serviceName.getText());
                         data[1] = String.valueOf(price.getText());
                         data[2] = preferences.getString("id", "");
-                        PutData putData = new PutData("http://192.168.100.6/barbershop-php/service/addService.php", "POST", field, data);
+                        PutData putData = new PutData("http://188.54.243.108/barbershop-php/service/addService.php", "POST", field, data);
                         if (putData.startPut()) {
                             if (putData.onComplete()) {
                                 String result = putData.getResult();
