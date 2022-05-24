@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".MyAccountActivity"
     android:orientation="vertical"
-    android:background="@color/background_light_blue">
+    android:background="@drawable/background_colored1">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -40,8 +40,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingHorizontal="16dp"
-        android:paddingVertical="24dp"
-        android:background="@color/white">
+        android:paddingVertical="24dp">
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -180,8 +179,9 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/myAccountSaveButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="54dp"
             android:layout_marginHorizontal="64dp"
+            app:cornerRadius="20dp"
             android:layout_marginVertical="24dp"
             android:text="Save"/>
 

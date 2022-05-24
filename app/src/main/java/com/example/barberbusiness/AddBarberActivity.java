@@ -53,7 +53,7 @@ public class AddBarberActivity extends AppCompatActivity {
                            data[1] = String.valueOf(barberExperience.getText().toString());
                            data[2] = String.valueOf(barberNationality.getText());
                            data[3] = preferences.getString("id", "");
-                           PutData putData = new PutData("http://188.54.243.108/barbershop-php/barber/addBarber.php", "POST", field, data);
+                           PutData putData = new PutData("http://192.168.100.6/barbershop-php/barber/addBarber.php", "POST", field, data);
                            if (putData.startPut()) {
                                if (putData.onComplete()) {
                                    String result = putData.getResult();

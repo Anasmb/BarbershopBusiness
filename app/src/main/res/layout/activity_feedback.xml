@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".FeedbackActivity"
     android:orientation="vertical"
-    android:background="@color/background_light_blue">
+    android:background="@drawable/background_colored1">
 
     <RelativeLayout
         android:layout_width="match_parent"

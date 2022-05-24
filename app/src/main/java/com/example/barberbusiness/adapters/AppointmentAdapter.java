@@ -122,7 +122,7 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
                 String[] data = new String[2];
                 data[0] = appointmentID;
                 data[1] = status;
-                PutData putData = new PutData("http://188.54.243.108/barbershop-php/changeStatus.php", "POST", field, data);
+                PutData putData = new PutData("http://192.168.100.6/barbershop-php/changeStatus.php", "POST", field, data);
                 if (putData.startPut()) {
                     if (putData.onComplete()) {
                         String result = putData.getResult();

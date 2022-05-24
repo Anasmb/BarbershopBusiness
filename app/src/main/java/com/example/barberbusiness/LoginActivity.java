@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
@@ -16,7 +17,7 @@ import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private TextInputEditText phoneNumber, password;
+    private EditText phoneNumber, password;
     private MaterialButton loginButton;
 
     @Override
@@ -42,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
                         data[0] = String.valueOf(phoneNumber.getText());
                         data[1] = String.valueOf(password.getText());
                         Log.d("php" , data[0] + " " + data[1]);
-                        PutData putData = new PutData("http://188.54.243.108/barbershop-php/barbershop/loginBarbershop.php", "POST", field, data);
+                        PutData putData = new PutData("http://192.168.100.6/barbershop-php/barbershop/loginBarbershop.php", "POST", field, data);
                         if (putData.startPut()) {
                             if (putData.onComplete()) {
                                 String result = putData.getResult();

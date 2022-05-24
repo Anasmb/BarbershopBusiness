@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".TimeActivity"
     android:orientation="vertical"
-    android:background="@color/background_light_blue">
+    android:background="@drawable/login_background">
 
     <RelativeLayout
         android:layout_width="match_parent"

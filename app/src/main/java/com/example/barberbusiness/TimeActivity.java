@@ -134,7 +134,7 @@ public class TimeActivity extends AppCompatActivity implements View.OnClickListe
                     String[] data = new String[2];
                     data[0] = preferences.getString("id","");
                     data[1] = openingHours;
-                    PutData putData = new PutData("http://188.54.243.108/barbershop-php/hoursAPI.php", "POST", field, data);
+                    PutData putData = new PutData("http://192.168.100.6/barbershop-php/hoursAPI.php", "POST", field, data);
                     if (putData.startPut()) {
                         if (putData.onComplete()) {
                             String result = putData.getResult();

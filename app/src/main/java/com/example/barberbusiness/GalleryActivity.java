@@ -44,7 +44,7 @@ import java.util.List;
 
 public class GalleryActivity extends AppCompatActivity {
 
-    private String SQL_URL = "http://188.54.243.108/barbershop-php/images/getImages.php";
+    private String SQL_URL = "http://192.168.100.6/barbershop-php/images/getImages.php";
     private GridView gridView;
     private GalleryAdapter adapter;
     private List<GalleryItem> galleryItemList;
@@ -147,7 +147,7 @@ public class GalleryActivity extends AppCompatActivity {
                 data[0] = preferences.getString("id","");
                 data[1] = encodedImg;
 
-                PutData putData = new PutData("http://188.54.243.108/barbershop-php/images/addImage.php", "POST", field, data);
+                PutData putData = new PutData("http://192.168.100.6/barbershop-php/images/addImage.php", "POST", field, data);
                 if (putData.startPut()) {
                     if (putData.onComplete()) {
                         String result = putData.getResult();
@@ -210,7 +210,7 @@ public class GalleryActivity extends AppCompatActivity {
                 data[0] = preferences.getString("id","");
                 data[1] = String.valueOf(imageID);
 
-                PutData putData = new PutData("http://188.54.243.108/barbershop-php/images/deleteImage.php", "POST", field, data);
+                PutData putData = new PutData("http://192.168.100.6/barbershop-php/images/deleteImage.php", "POST", field, data);
                 if (putData.startPut()) {
                     if (putData.onComplete()) {
                         String result = putData.getResult();

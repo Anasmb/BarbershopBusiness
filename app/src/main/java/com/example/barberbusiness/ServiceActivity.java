@@ -42,7 +42,7 @@ import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 
 public class ServiceActivity extends AppCompatActivity {
 
-    private String SQL_URL = "http://188.54.243.108/barbershop-php/service/getService.php";
+    private String SQL_URL = "http://192.168.100.6/barbershop-php/service/getService.php";
     private ImageView addButton, backButton;
     private RecyclerView recyclerView;
     private ServiceAdapter adapter;
@@ -171,7 +171,7 @@ public class ServiceActivity extends AppCompatActivity {
 
                 String[] data = new String[1];
                 data[0] = String.valueOf(id);
-                PutData putData = new PutData("http://188.54.243.108/barbershop-php/service/deleteService.php", "POST", field, data);
+                PutData putData = new PutData("http://192.168.100.6/barbershop-php/service/deleteService.php", "POST", field, data);
                 if (putData.startPut()) {
                     if (putData.onComplete()) {
                         String result = putData.getResult();
