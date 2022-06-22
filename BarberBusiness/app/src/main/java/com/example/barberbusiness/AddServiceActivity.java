@@ -43,8 +43,6 @@ public class AddServiceActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
 
-            Log.d("debug", "Add Service to barbershop with ID = " + preferences.getString("id",""));
-
             if (serviceName.length() > 0 && price != null) {
 
                 saveButton.setClickable(false);

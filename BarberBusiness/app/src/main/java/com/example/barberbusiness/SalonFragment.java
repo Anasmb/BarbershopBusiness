@@ -131,7 +131,7 @@ public class SalonFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) { // choose image from gallery
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 1){
+        if(requestCode == 1 && data != null){
 
             Uri filePath = data.getData();
 

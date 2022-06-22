@@ -20,7 +20,7 @@
         android:id="@+id/servicePriceTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="77 SR"
+        android:text="00 SR"
         android:fontFamily="@font/roboto_bold"
         android:textSize="20dp"
         android:textColor="#9C9C9C"
